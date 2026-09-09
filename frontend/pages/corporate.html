@@ -1,0 +1,323 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RIDE. - Corporate Accounts</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="app-shell">
+  <!-- 
+    RIDE Platform - Corporate Accounts Page
+    Copyright (c) 2025 Newton & Devin AI Assistant. All rights reserved.
+    Purpose: Corporate account registration and management
+    Code Flow: Registration → Approval → Employee Management → Billing
+  -->
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <span class="brand-mark">R</span>
+          <span>RIDE.</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item">
+          <span class="nav-icon">📍</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="corporate.html" class="nav-item active">
+          <span class="nav-icon">🏢</span>
+          <span>Corporate Accounts</span>
+        </a>
+        <a href="delivery.html" class="nav-item">
+          <span class="nav-icon">📦</span>
+          <span>Package Delivery</span>
+        </a>
+        <a href="wallet.html" class="nav-item">
+          <span class="nav-icon">💳</span>
+          <span>Wallet</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+          <span class="nav-icon">👤</span>
+          <span>Profile</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button id="menuToggle" class="menu-toggle">☰</button>
+          <h1>🏢 Corporate Accounts</h1>
+        </div>
+        <div class="header-right">
+          <span class="welcome-text">Streamline your business transportation</span>
+        </div>
+      </header>
+
+      <!-- Corporate Registration -->
+      <section class="content-card">
+        <div class="card-header">
+          <h2>Register Your Company</h2>
+          <p class="muted">Set up a corporate account for employee transportation</p>
+        </div>
+        <form id="corporateForm">
+          <div class="form-section">
+            <h3>Company Information</h3>
+            <label>Company Name *
+              <input type="text" name="company_name" required placeholder="Your company name">
+            </label>
+            <label>Business Registration Number *
+              <input type="text" name="business_registration_number" required placeholder="e.g. 8000123456789">
+            </label>
+            <label>Physical Address *
+              <input type="text" name="physical_address" required placeholder="Company address">
+            </label>
+            <label>Company Size *
+              <select name="company_size" required>
+                <option value="">Select size</option>
+                <option value="small">Small (1-10 employees)</option>
+                <option value="medium">Medium (11-50 employees)</option>
+                <option value="large">Large (50+ employees)</option>
+              </select>
+            </label>
+            <label>Industry *
+              <input type="text" name="industry" required placeholder="e.g. Technology, Hospitality, Finance">
+            </label>
+          </div>
+
+          <div class="form-section">
+            <h3>Contact Information</h3>
+            <label>Contact Email *
+              <input type="email" name="contact_email" required placeholder="contact@company.com">
+            </label>
+            <label>Contact Phone *
+              <input type="tel" name="contact_phone" required placeholder="+256 7XX XXX XXX">
+            </label>
+          </div>
+
+          <div class="form-section">
+            <h3>Billing Information</h3>
+            <label>Billing Contact *
+              <input type="text" name="billing_contact" required placeholder="Finance manager name">
+            </label>
+            <label>Billing Email *
+              <input type="email" name="billing_email" required placeholder="billing@company.com">
+            </label>
+            <label>Billing Address *
+              <input type="text" name="billing_address" required placeholder="Billing address">
+            </label>
+            <label>Payment Terms *
+              <select name="payment_terms" required>
+                <option value="">Select terms</option>
+                <option value="monthly">Monthly Billing</option>
+                <option value="quarterly">Quarterly Billing</option>
+                <option value="annual">Annual Billing</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="form-section">
+            <h3>Usage Estimate</h3>
+            <label>Estimated Monthly Rides *
+              <input type="number" name="estimated_monthly_rides" required placeholder="e.g. 100" min="1">
+            </label>
+          </div>
+
+          <div class="corporate-benefits">
+            <h3>🎁 Corporate Benefits</h3>
+            <ul>
+              <li>✓ Credit-based billing system</li>
+              <li>✓ Employee ride management</li>
+              <li>✓ Detailed monthly invoices</li>
+              <li>✓ Priority booking for employees</li>
+              <li>✓ Dedicated account manager</li>
+              <li>✓ Custom reporting and analytics</li>
+            </ul>
+          </div>
+
+          <button type="submit" class="app-btn full-width">Register Corporate Account</button>
+          <p id="corporateMessage" class="form-message"></p>
+        </form>
+      </section>
+
+      <!-- Employee Management -->
+      <section class="content-card">
+        <div class="card-header">
+          <h2>Employee Management</h2>
+          <button class="app-btn secondary">Add Employee</button>
+        </div>
+        <div class="employee-list">
+          <div class="employee-item">
+            <div class="employee-info">
+              <span class="employee-name">John Mugisha</span>
+              <span class="employee-email">john.mugisha@techcorp.ug</span>
+              <span class="employee-dept">Engineering</span>
+            </div>
+            <div class="employee-stats">
+              <span class="budget-limit">Budget: UGX 100,000</span>
+              <span class="current-usage">Used: UGX 45,000</span>
+              <span class="rides-count">12 rides this month</span>
+            </div>
+          </div>
+          <div class="employee-item">
+            <div class="employee-info">
+              <span class="employee-name">Grace Nalubega</span>
+              <span class="employee-email">grace.nalubega@techcorp.ug</span>
+              <span class="employee-dept">Marketing</span>
+            </div>
+            <div class="employee-stats">
+              <span class="budget-limit">Budget: UGX 75,000</span>
+              <span class="current-usage">Used: UGX 32,000</span>
+              <span class="rides-count">8 rides this month</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Billing Overview -->
+      <section class="content-card">
+        <div class="card-header">
+          <h2>💰 Billing Overview</h2>
+          <button class="app-btn secondary">View Invoices</button>
+        </div>
+        <div class="billing-summary">
+          <div class="billing-card">
+            <span class="billing-label">Current Balance</span>
+            <span class="billing-value">UGX 450,000</span>
+          </div>
+          <div class="billing-card">
+            <span class="billing-label">Credit Limit</span>
+            <span class="billing-value">UGX 2,000,000</span>
+          </div>
+          <div class="billing-card">
+            <span class="billing-label">Available Credit</span>
+            <span class="billing-value">UGX 1,550,000</span>
+          </div>
+          <div class="billing-card">
+            <span class="billing-label">Next Invoice</span>
+            <span class="billing-value">Feb 1, 2025</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Book Corporate Ride -->
+      <section class="content-card">
+        <div class="card-header">
+          <h2>Book Corporate Ride</h2>
+          <p class="muted">Charge ride to corporate account</p>
+        </div>
+        <form id="corporateRideForm">
+          <label>Select Employee *
+            <select name="employee_id" required>
+              <option value="">Select employee</option>
+              <option value="1">John Mugishi - Engineering</option>
+              <option value="2">Grace Nalubega - Marketing</option>
+            </select>
+          </label>
+          <label>Pickup Location *
+            <input type="text" name="pickup_location" required placeholder="Pickup address">
+          </label>
+          <label>Dropoff Location *
+            <input type="text" name="dropoff_location" required placeholder="Dropoff address">
+          </label>
+          <label>Purpose *
+            <select name="purpose" required>
+              <option value="">Select purpose</option>
+              <option value="business">Business Meeting</option>
+              <option value="client_meeting">Client Meeting</option>
+              <option value="airport">Airport Transfer</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+          <label>Ride Type *
+            <select name="ride_type" required>
+              <option value="standard">Standard</option>
+              <option value="premium">Premium</option>
+              <option value="xl">XL (6 seats)</option>
+            </select>
+          </label>
+          <button type="submit" class="app-btn full-width">Book Corporate Ride</button>
+          <p id="corporateRideMessage" class="form-message"></p>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Corporate registration form
+    document.getElementById('corporateForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+
+      try {
+        const response = await fetch('http://localhost:8000/api/corporate/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          const msg = document.getElementById('corporateMessage');
+          msg.textContent = `Registration submitted! Account: ${result.account_number}. Status: ${result.status}. Credit Limit: UGX ${result.credit_limit.toLocaleString()}`;
+          msg.className = 'form-message success';
+          e.target.reset();
+        } else {
+          throw new Error('Registration failed');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        const msg = document.getElementById('corporateMessage');
+        msg.textContent = 'Demo: Registration submitted successfully';
+        msg.className = 'form-message success';
+      }
+    });
+
+    // Corporate ride booking
+    document.getElementById('corporateRideForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+      data.account_id = 1; // Demo account ID
+
+      try {
+        const response = await fetch('http://localhost:8000/api/corporate/ride', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          const msg = document.getElementById('corporateRideMessage');
+          msg.textContent = `Ride booked! Ride ID: ${result.ride_id}. Fare: UGX ${result.estimated_fare.toLocaleString()}`;
+          msg.className = 'form-message success';
+          e.target.reset();
+        } else {
+          throw new Error('Booking failed');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        const msg = document.getElementById('corporateRideMessage');
+        msg.textContent = 'Demo: Ride booked successfully';
+        msg.className = 'form-message success';
+      }
+    });
+
+    // Menu toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.dashboard-sidebar').classList.toggle('open');
+    });
+  </script>
+
+  <footer class="dashboard-footer">
+    <div>© 2025 Newton & Devin AI Assistant. All rights reserved.</div>
+    <div>RIDE. Move With Impact</div>
+  </footer>
+</body>
+</html>

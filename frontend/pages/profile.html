@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Profile — RiDe</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="app-shell">
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <span class="brand-mark">R</span>
+          <span>RiDe</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item">
+          <span class="nav-icon">📍</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="book.html" class="nav-item">
+          <span class="nav-icon">🚗</span>
+          <span>Book a Ride</span>
+        </a>
+        <a href="tracking.html" class="nav-item">
+          <span class="nav-icon">🧭</span>
+          <span>Live Tracking</span>
+        </a>
+        <a href="wallet.html" class="nav-item">
+          <span class="nav-icon">💳</span>
+          <span>Wallet</span>
+        </a>
+        <a href="trips.html" class="nav-item">
+          <span class="nav-icon">📋</span>
+          <span>Trip History</span>
+        </a>
+        <a href="profile.html" class="nav-item active">
+          <span class="nav-icon">👤</span>
+          <span>Profile</span>
+        </a>
+        <a href="sos.html" class="nav-item">
+          <span class="nav-icon">🛡️</span>
+          <span>SOS Emergency</span>
+        </a>
+        <a href="assistant.html" class="nav-item">
+          <span class="nav-icon">🤖</span>
+          <span>AI Assistant</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-icon">🏠</span>
+          <span>Back to Home</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button class="menu-toggle" id="menuToggle">☰</button>
+          <div>
+            <h1>Rider Profile</h1>
+            <p class="header-path">/profile</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="user-avatar">SN</div>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <div class="profile-grid">
+          <!-- Profile Card -->
+          <div class="profile-card">
+            <div class="profile-header">
+              <div class="profile-avatar-large">SN</div>
+              <div class="profile-info">
+                <h2>Sarah Nakamya</h2>
+                <p class="profile-id">ID: R-10042</p>
+                <p class="member-since">Member since March 15, 2023</p>
+              </div>
+            </div>
+
+            <div class="profile-stats">
+              <div class="profile-stat">
+                <div class="stat-value">247</div>
+                <div class="stat-label">Total Rides</div>
+              </div>
+              <div class="profile-stat">
+                <div class="stat-value">4.8 ★</div>
+                <div class="stat-label">Rating</div>
+              </div>
+              <div class="profile-stat">
+                <div class="stat-value">2</div>
+                <div class="stat-label">Emergency Contacts</div>
+              </div>
+            </div>
+
+            <div class="profile-details">
+              <div class="detail-item">
+                <span class="detail-label">Email</span>
+                <span class="detail-value">sarah.nakamya@email.com</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Phone</span>
+                <span class="detail-value">+256 712 345 678</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Language</span>
+                <span class="detail-value">English</span>
+              </div>
+            </div>
+
+            <button class="app-btn full-width">Edit Profile</button>
+          </div>
+
+          <!-- Preferences Card -->
+          <div class="content-card">
+            <h3>Ride Preferences</h3>
+            <div class="preferences-list">
+              <div class="preference-item">
+                <div class="pref-info">
+                  <span class="pref-icon">🚗</span>
+                  <div>
+                    <div class="pref-name">Vehicle Type</div>
+                    <div class="pref-value">Comfort</div>
+                  </div>
+                </div>
+                <button class="edit-pref">Edit</button>
+              </div>
+              <div class="preference-item">
+                <div class="pref-info">
+                  <span class="pref-icon">💳</span>
+                  <div>
+                    <div class="pref-name">Payment Method</div>
+                    <div class="pref-value">Mobile Money</div>
+                  </div>
+                </div>
+                <button class="edit-pref">Edit</button>
+              </div>
+              <div class="preference-item">
+                <div class="pref-info">
+                  <span class="pref-icon">🔇</span>
+                  <div>
+                    <div class="pref-name">Quiet Ride</div>
+                    <div class="pref-value">Off</div>
+                  </div>
+                </div>
+                <button class="edit-pref">Edit</button>
+              </div>
+              <div class="preference-item">
+                <div class="pref-info">
+                  <span class="pref-icon">❄️</span>
+                  <div>
+                    <div class="pref-name">Air Conditioning</div>
+                    <div class="pref-value">Required</div>
+                  </div>
+                </div>
+                <button class="edit-pref">Edit</button>
+              </div>
+              <div class="preference-item">
+                <div class="pref-info">
+                  <span class="pref-icon">🧳</span>
+                  <div>
+                    <div class="pref-name">Luggage Space</div>
+                    <div class="pref-value">Not Required</div>
+                  </div>
+                </div>
+                <button class="edit-pref">Edit</button>
+              </div>
+              <div class="preference-item">
+                <div class="pref-info">
+                  <span class="pref-icon">🐕</span>
+                  <div>
+                    <div class="pref-name">Pet Friendly</div>
+                    <div class="pref-value">No</div>
+                  </div>
+                </div>
+                <button class="edit-pref">Edit</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Emergency Contacts -->
+          <div class="content-card">
+            <h3>Emergency Contacts</h3>
+            <div class="emergency-contacts">
+              <div class="contact-item">
+                <div class="contact-avatar">JN</div>
+                <div class="contact-info">
+                  <div class="contact-name">John Nakamya</div>
+                  <div class="contact-relation">Husband</div>
+                  <div class="contact-phone">+256 712 900 000</div>
+                </div>
+                <button class="contact-action">Call</button>
+              </div>
+              <div class="contact-item">
+                <div class="contact-avatar">GN</div>
+                <div class="contact-info">
+                  <div class="contact-name">Grace Nakamya</div>
+                  <div class="contact-relation">Sister</div>
+                  <div class="contact-phone">+256 712 901 111</div>
+                </div>
+                <button class="contact-action">Call</button>
+              </div>
+            </div>
+            <button class="app-btn secondary full-width">Add Emergency Contact</button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Menu toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.dashboard-sidebar').classList.toggle('open');
+    });
+
+    // Edit preference buttons
+    document.querySelectorAll('.edit-pref').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const prefName = this.closest('.preference-item').querySelector('.pref-name').textContent;
+        alert(`Edit ${prefName} - Demo feature`);
+      });
+    });
+
+    // Contact action buttons
+    document.querySelectorAll('.contact-action').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const phone = this.closest('.contact-item').querySelector('.contact-phone').textContent;
+        alert(`Call ${phone} - Demo feature`);
+      });
+    });
+  </script>
+</body>
+</html>

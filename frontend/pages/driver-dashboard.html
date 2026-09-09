@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RIDE. - Driver Dashboard</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="app-shell">
+  <!-- 
+    RIDE Platform - Driver Dashboard
+    Copyright (c) 2025 Newton & Devin AI Assistant. All rights reserved.
+    Purpose: Driver dashboard for managing rides, earnings, and waitlist
+    Code Flow: Dashboard Actions → API Calls → Data Updates → UI Refresh
+  -->
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <span class="brand-mark">R</span>
+          <span>RIDE.</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="driver-dashboard.html" class="nav-item active">
+          <span class="nav-icon">👨‍✈️</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="driver-rides.html" class="nav-item">
+          <span class="nav-icon">🚗</span>
+          <span>Ride Requests</span>
+        </a>
+        <a href="driver-earnings.html" class="nav-item">
+          <span class="nav-icon">💰</span>
+          <span>Earnings</span>
+        </a>
+        <a href="driver-wallet.html" class="nav-item">
+          <span class="nav-icon">💳</span>
+          <span>Wallet</span>
+        </a>
+        <a href="driver-profile.html" class="nav-item">
+          <span class="nav-icon">👤</span>
+          <span>Profile</span>
+        </a>
+        <a href="driver-safety.html" class="nav-item">
+          <span class="nav-icon">🛡️</span>
+          <span>Safety</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-icon">🏠</span>
+          <span>Back to Home</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button class="menu-toggle" id="menuToggle">☰</button>
+          <div>
+            <h1>Driver Dashboard</h1>
+            <p class="header-path">/driver/dashboard</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="driver-status online">Online</div>
+          <div class="user-avatar">JO</div>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <!-- Driver Waitlist Banner -->
+        <div class="waitlist-banner driver">
+          <div class="waitlist-content">
+            <span class="waitlist-icon">📋</span>
+            <div>
+              <h3>Join Driver Waitlist</h3>
+              <p>Get priority access to rides and earn more</p>
+            </div>
+          </div>
+          <button class="waitlist-btn" onclick="openWaitlistModal()">Join Waitlist</button>
+        </div>
+
+        <!-- Stats Cards -->
+        <section class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon green">🚗</div>
+            </div>
+            <div class="stat-value">1,832</div>
+            <div class="stat-label">Total Trips</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon amber">⭐</div>
+            </div>
+            <div class="stat-value">4.9</div>
+            <div class="stat-label">Rating</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon blue">💰</div>
+            </div>
+            <div class="stat-value">UGX 1.25M</div>
+            <div class="stat-label">Wallet Balance</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon rose">📈</div>
+            </div>
+            <div class="stat-value">UGX 85K</div>
+            <div class="stat-label">Today's Earnings</div>
+          </div>
+        </section>
+
+        <!-- Availability Toggle -->
+        <div class="content-card">
+          <div class="availability-toggle">
+            <div class="toggle-info">
+              <h3>Driver Availability</h3>
+              <p class="muted">Toggle your availability to receive ride requests</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Waitlist Registrations -->
+        <div class="content-card">
+          <div class="card-header">
+            <h3>🎟 Waitlist Registrations</h3>
+            <p class="muted">People waiting to join as drivers</p>
+          </div>
+          <div class="waitlist-list">
+            <div class="waitlist-item">
+              <div class="waitlist-user">
+                <span class="user-name">John Mugisha</span>
+                <span class="user-phone">+256 712 345 678</span>
+              </div>
+              <div class="waitlist-meta">
+                <span class="position">#89</span>
+                <span class="city">Kampala</span>
+              </div>
+            </div>
+            <div class="waitlist-item">
+              <div class="waitlist-user">
+                <span class="user-name">Grace Nalubega</span>
+                <span class="user-phone">+256 702 456 789</span>
+              </div>
+              <div class="waitlist-meta">
+                <span class="position">#92</span>
+                <span class="city">Entebbe</span>
+              </div>
+            </div>
+            <div class="waitlist-item">
+              <div class="waitlist-user">
+                <span class="user-name">Peter Kintu</span>
+                <span class="user-phone">+256 700 567 890</span>
+              </div>
+              <div class="waitlist-meta">
+                <span class="position">#95</span>
+                <span class="city">Mukono</span>
+              </div>
+            </div>
+          </div>
+          <button class="app-btn secondary full-width" onclick="openWaitlistModal()">Join Waitlist</button>
+        </div>
+
+        <!-- Current Vehicle -->
+        <div class="content-card">
+          <h3>Current Vehicle</h3>
+          <div class="vehicle-info">
+            <div class="vehicle-details">
+              <div class="vehicle-name">Toyota Corolla - White</div>
+              <div class="vehicle-plate">UAK 456J</div>
+              <div class="vehicle-status">✓ Verified</div>
+            </div>
+            <button class="app-btn secondary">Edit Vehicle</button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Waitlist Modal -->
+  <div class="modal" id="waitlistModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Join Driver Waitlist</h2>
+        <button class="close-btn" onclick="closeWaitlistModal()">×</button>
+      </div>
+      <form id="driverWaitlistForm">
+        <label>Full Name *
+          <input type="text" name="full_name" required placeholder="Enter your full name">
+        </label>
+        <label>Phone Number *
+          <input type="tel" name="phone" required placeholder="Enter your phone number">
+        </label>
+        <label>Email
+          <input type="email" name="email" placeholder="Enter your email address">
+        </label>
+        <label>City/Area *
+          <input type="text" name="city" required placeholder="e.g. Kampala, Entebbe">
+        </label>
+        <label class="toggle-line">
+          <input type="checkbox" name="notify" checked>
+          <span class="fake-toggle"></span>
+          <span><b>Notify me when I'm approved</b></span>
+        </label>
+        <button type="submit" class="app-btn full-width">Join Waitlist</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Waitlist modal functions
+    function openWaitlistModal() {
+      document.getElementById('waitlistModal').style.display = 'block';
+    }
+
+    function closeWaitlistModal() {
+      document.getElementById('waitlistModal').style.display = 'none';
+    }
+
+    // Waitlist form submission
+    document.getElementById('driverWaitlistForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+      data.desired_role = 'driver';
+
+      try {
+        const response = await fetch('/api/waitlist/join', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+          alert('Successfully joined driver waitlist!');
+          closeWaitlistModal();
+          e.target.reset();
+        } else {
+          alert('Failed to join waitlist. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Demo: Successfully joined waitlist');
+        closeWaitlistModal();
+        e.target.reset();
+      }
+    });
+
+    // Menu toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.dashboard-sidebar').classList.toggle('open');
+    });
+  </script>
+
+  <footer class="dashboard-footer">
+    <div>© 2025 Newton & Devin AI Assistant. All rights reserved.</div>
+    <div>RIDE. Move With Impact</div>
+  </footer>
+</body>
+</html>

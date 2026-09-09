@@ -1,0 +1,38 @@
+# RIDE Platform - Production Requirements
+# Copyright (c) 2025 Newton & Devin AI Assistant
+
+# Core Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Database
+sqlalchemy==2.0.23
+# Using older pydantic to avoid Rust compilation issues
+pydantic==1.10.13
+python-multipart==0.0.6
+
+# Authentication & Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-dotenv==1.0.0
+
+# Real-time & Async
+websockets==12.0
+aiofiles==23.2.1
+
+# HTTP Client
+httpx==0.25.2
+
+# Maps & Location (API keys required in .env)
+# Mapbox (uncomment when API key available)
+# mapbox-sdk==0.1.0
+
+# Redis (commented for testing, uncomment for production)
+# redis==5.0.1
+# celery==5.3.4
+
+# Email (for notifications)
+# sendgrid==6.10.0
+
+# SMS (for Uganda - MTN/Airtel)
+# africastalking==1.2.7

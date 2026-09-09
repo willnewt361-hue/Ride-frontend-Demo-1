@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Wallet — RiDe</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="app-shell">
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <span class="brand-mark">R</span>
+          <span>RiDe</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item">
+          <span class="nav-icon">📍</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="book.html" class="nav-item">
+          <span class="nav-icon">🚗</span>
+          <span>Book a Ride</span>
+        </a>
+        <a href="tracking.html" class="nav-item">
+          <span class="nav-icon">🧭</span>
+          <span>Live Tracking</span>
+        </a>
+        <a href="wallet.html" class="nav-item active">
+          <span class="nav-icon">💳</span>
+          <span>Wallet</span>
+        </a>
+        <a href="trips.html" class="nav-item">
+          <span class="nav-icon">📋</span>
+          <span>Trip History</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+          <span class="nav-icon">👤</span>
+          <span>Profile</span>
+        </a>
+        <a href="sos.html" class="nav-item">
+          <span class="nav-icon">🛡️</span>
+          <span>SOS Emergency</span>
+        </a>
+        <a href="assistant.html" class="nav-item">
+          <span class="nav-icon">🤖</span>
+          <span>AI Assistant</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-icon">🏠</span>
+          <span>Back to Home</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button class="menu-toggle" id="menuToggle">☰</button>
+          <div>
+            <h1>My Wallet</h1>
+            <p class="header-path">/wallet</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="user-avatar">SN</div>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <!-- Balance Card -->
+        <div class="wallet-balance-card">
+          <div class="balance-header">
+            <div>
+              <div class="balance-label">Wallet Balance</div>
+              <div class="balance-amount" id="balanceAmount">UGX 85,000</div>
+            </div>
+            <div class="balance-icon">💳</div>
+          </div>
+          <div class="payment-methods">
+            <button class="payment-method-btn">
+              <span class="pm-icon">📱</span>
+              <span>Mobile Money</span>
+            </button>
+            <button class="payment-method-btn">
+              <span class="pm-icon">💳</span>
+              <span>Card</span>
+            </button>
+            <button class="payment-method-btn">
+              <span class="pm-icon">💵</span>
+              <span>Cash</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="wallet-grid">
+          <!-- Top Up Section -->
+          <div class="content-card">
+            <h3>Top Up Wallet</h3>
+            <div class="topup-amounts">
+              <button class="topup-btn" data-amount="10000">10K</button>
+              <button class="topup-btn" data-amount="25000">25K</button>
+              <button class="topup-btn" data-amount="50000">50K</button>
+              <button class="topup-btn" data-amount="100000">100K</button>
+              <button class="topup-btn" data-amount="200000">200K</button>
+              <button class="topup-btn" data-amount="500000">500K</button>
+            </div>
+            <div class="custom-topup">
+              <input type="number" id="customAmount" placeholder="Custom amount">
+              <button class="topup-action-btn" id="topupBtn">
+                <span>➕</span>
+                <span>Top Up</span>
+              </button>
+            </div>
+            <div class="topup-message" id="topupMessage"></div>
+          </div>
+
+          <!-- Transaction History -->
+          <div class="content-card transactions-card">
+            <div class="card-header">
+              <h3>Transactions</h3>
+              <div class="transaction-tabs">
+                <button class="trans-tab active" data-filter="all">All</button>
+                <button class="trans-tab" data-filter="top_up">Top Up</button>
+                <button class="trans-tab" data-filter="payment">Payments</button>
+              </div>
+            </div>
+            <div class="transaction-list" id="transactionList">
+              <div class="transaction-item" data-type="payment">
+                <div class="trans-icon negative">📤</div>
+                <div class="trans-details">
+                  <div class="trans-desc">Ride payment • Kampala CBD</div>
+                  <div class="trans-meta">Jan 10, 2025 • Wallet</div>
+                </div>
+                <div class="trans-amount negative">-UGX 25,000</div>
+              </div>
+              <div class="transaction-item" data-type="payment">
+                <div class="trans-icon negative">📤</div>
+                <div class="trans-details">
+                  <div class="trans-desc">Ride payment • Entebbe Airport</div>
+                  <div class="trans-meta">Jan 9, 2025 • Wallet</div>
+                </div>
+                <div class="trans-amount negative">-UGX 18,000</div>
+              </div>
+              <div class="transaction-item" data-type="top_up">
+                <div class="trans-icon positive">📥</div>
+                <div class="trans-details">
+                  <div class="trans-desc">Wallet top-up • Mobile Money</div>
+                  <div class="trans-meta">Jan 10, 2025 • MTN MoMo</div>
+                </div>
+                <div class="trans-amount positive">+UGX 100,000</div>
+              </div>
+              <div class="transaction-item" data-type="top_up">
+                <div class="trans-icon positive">📥</div>
+                <div class="trans-details">
+                  <div class="trans-desc">Wallet top-up • Card</div>
+                  <div class="trans-meta">Jan 7, 2025 • Visa</div>
+                </div>
+                <div class="trans-amount positive">+UGX 50,000</div>
+              </div>
+              <div class="transaction-item" data-type="payment">
+                <div class="trans-icon negative">📤</div>
+                <div class="trans-details">
+                  <div class="trans-desc">Ride payment • Acacia Mall</div>
+                  <div class="trans-meta">Jan 8, 2025 • Wallet</div>
+                </div>
+                <div class="trans-amount negative">-UGX 12,000</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Wallet balance state
+    let balance = parseInt(localStorage.getItem('rideWallet')) || 85000;
+
+    // Update balance display
+    function updateBalance() {
+      document.getElementById('balanceAmount').textContent = `UGX ${balance.toLocaleString()}`;
+      localStorage.setItem('rideWallet', balance.toString());
+    }
+
+    // Initialize balance
+    updateBalance();
+
+    // Top up functionality
+    const topupBtns = document.querySelectorAll('.topup-btn');
+    const customAmountInput = document.getElementById('customAmount');
+    const topupActionButton = document.getElementById('topupBtn');
+    const topupMessage = document.getElementById('topupMessage');
+
+    function processTopup(amount) {
+      balance += amount;
+      updateBalance();
+      topupMessage.textContent = `Successfully added UGX ${amount.toLocaleString()} to your wallet!`;
+      topupMessage.className = 'topup-message success';
+      setTimeout(() => {
+        topupMessage.textContent = '';
+        topupMessage.className = 'topup-message';
+      }, 3000);
+    }
+
+    topupBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const amount = parseInt(btn.dataset.amount);
+        processTopup(amount);
+      });
+    });
+
+    topupActionButton.addEventListener('click', () => {
+      const customAmount = parseInt(customAmountInput.value);
+      if (customAmount && customAmount > 0) {
+        processTopup(customAmount);
+        customAmountInput.value = '';
+      } else {
+        topupMessage.textContent = 'Please enter a valid amount';
+        topupMessage.className = 'topup-message error';
+      }
+    });
+
+    // Transaction filtering
+    const transTabs = document.querySelectorAll('.trans-tab');
+    const transactionItems = document.querySelectorAll('.transaction-item');
+
+    transTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        transTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filter = tab.dataset.filter;
+        transactionItems.forEach(item => {
+          if (filter === 'all' || item.dataset.type === filter) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Menu toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.dashboard-sidebar').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

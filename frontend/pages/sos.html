@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SOS — RiDe</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="app-shell">
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <span class="brand-mark">R</span>
+          <span>RiDe</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item">
+          <span class="nav-icon">📍</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="book.html" class="nav-item">
+          <span class="nav-icon">🚗</span>
+          <span>Book a Ride</span>
+        </a>
+        <a href="tracking.html" class="nav-item">
+          <span class="nav-icon">🧭</span>
+          <span>Live Tracking</span>
+        </a>
+        <a href="wallet.html" class="nav-item">
+          <span class="nav-icon">💳</span>
+          <span>Wallet</span>
+        </a>
+        <a href="trips.html" class="nav-item">
+          <span class="nav-icon">📋</span>
+          <span>Trip History</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+          <span class="nav-icon">👤</span>
+          <span>Profile</span>
+        </a>
+        <a href="sos.html" class="nav-item active">
+          <span class="nav-icon">🛡️</span>
+          <span>SOS Emergency</span>
+        </a>
+        <a href="assistant.html" class="nav-item">
+          <span class="nav-icon">🤖</span>
+          <span>AI Assistant</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-icon">🏠</span>
+          <span>Back to Home</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button class="menu-toggle" id="menuToggle">☰</button>
+          <div>
+            <h1>SOS Emergency</h1>
+            <p class="header-path">/sos</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="user-avatar">SN</div>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <!-- SOS Button -->
+        <div class="sos-main-card">
+          <div class="sos-icon">🛡️</div>
+          <h2>Emergency Assistance</h2>
+          <p class="sos-description">Press the SOS button to alert emergency contacts and share your location with safety services.</p>
+          <button class="sos-button" id="sosButton">
+            <span class="sos-pulse"></span>
+            <span>ACTIVATE SOS</span>
+          </button>
+          <div class="sos-message" id="sosMessage"></div>
+        </div>
+
+        <div class="safety-grid">
+          <!-- Emergency Contacts -->
+          <div class="content-card">
+            <h3>Emergency Contacts</h3>
+            <div class="emergency-numbers">
+              <div class="emergency-item">
+                <div class="emergency-icon">🚨</div>
+                <div class="emergency-details">
+                  <div class="emergency-number">999 / 112</div>
+                  <div class="emergency-label">Police Emergency</div>
+                </div>
+                <button class="call-btn">Call</button>
+              </div>
+              <div class="emergency-item">
+                <div class="emergency-icon">🏥</div>
+                <div class="emergency-details">
+                  <div class="emergency-number">911</div>
+                  <div class="emergency-label">Ambulance</div>
+                </div>
+                <button class="call-btn">Call</button>
+              </div>
+              <div class="emergency-item">
+                <div class="emergency-icon">🔥</div>
+                <div class="emergency-details">
+                  <div class="emergency-number">991</div>
+                  <div class="emergency-label">Fire Service</div>
+                </div>
+                <button class="call-btn">Call</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Safety Features -->
+          <div class="content-card">
+            <h3>Safety Features</h3>
+            <div class="safety-features">
+              <div class="safety-feature">
+                <span class="safety-feature-icon">📍</span>
+                <div>
+                  <div class="safety-feature-name">Location Sharing</div>
+                  <div class="safety-feature-desc">Share real-time location with contacts</div>
+                </div>
+              </div>
+              <div class="safety-feature">
+                <span class="safety-feature-icon">📱</span>
+                <div>
+                  <div class="safety-feature-name">Trip Sharing</div>
+                  <div class="safety-feature-desc">Share trip details with trusted contacts</div>
+                </div>
+              </div>
+              <div class="safety-feature">
+                <span class="safety-feature-icon">👮</span>
+                <div>
+                  <div class="safety-feature-name">Driver Verification</div>
+                  <div class="safety-feature-desc">Verified drivers with background checks</div>
+                </div>
+              </div>
+              <div class="safety-feature">
+                <span class="safety-feature-icon">⭐</span>
+                <div>
+                  <div class="safety-feature-name">Rating System</div>
+                  <div class="safety-feature-desc">Two-way rating for accountability</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Current Trip Info -->
+          <div class="content-card">
+            <h3>Current Trip Information</h3>
+            <div class="current-trip-info">
+              <div class="trip-info-item">
+                <span class="trip-info-label">Status</span>
+                <span class="trip-info-value no-trip">No active trip</span>
+              </div>
+              <div class="trip-info-item">
+                <span class="trip-info-label">Location</span>
+                <span class="trip-info-value">Kampala, Uganda</span>
+              </div>
+              <div class="trip-info-item">
+                <span class="trip-info-label">Last Known</span>
+                <span class="trip-info-value">Just now</span>
+              </div>
+            </div>
+            <button class="app-btn secondary full-width">Share My Location</button>
+          </div>
+        </div>
+
+        <!-- Safety Tips -->
+        <div class="content-card">
+          <h3>Safety Tips</h3>
+          <div class="safety-tips">
+            <div class="safety-tip">
+              <span class="tip-number">1</span>
+              <span>Always verify the driver's name, photo, and license plate before entering the vehicle</span>
+            </div>
+            <div class="safety-tip">
+              <span class="tip-number">2</span>
+              <span>Share your trip details with a friend or family member before starting your ride</span>
+            </div>
+            <div class="safety-tip">
+              <span class="tip-number">3</span>
+              <span>Sit in the back seat and keep your belongings close to you</span>
+            </div>
+            <div class="safety-tip">
+              <span class="tip-number">4</span>
+              <span>Trust your instincts - if something feels wrong, end the ride immediately</span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // SOS button functionality
+    const sosButton = document.getElementById('sosButton');
+    const sosMessage = document.getElementById('sosMessage');
+
+    sosButton.addEventListener('click', () => {
+      sosMessage.textContent = 'Demo SOS activated — emergency contacts would be notified in production.';
+      sosMessage.className = 'sos-message success';
+      
+      // Add visual feedback
+      sosButton.classList.add('activated');
+      
+      setTimeout(() => {
+        sosButton.classList.remove('activated');
+        sosMessage.textContent = '';
+        sosMessage.className = 'sos-message';
+      }, 5000);
+    });
+
+    // Call buttons
+    document.querySelectorAll('.call-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const number = this.closest('.emergency-item').querySelector('.emergency-number').textContent;
+        alert(`Demo: Call ${number} - Production would initiate actual call`);
+      });
+    });
+
+    // Menu toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.dashboard-sidebar').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

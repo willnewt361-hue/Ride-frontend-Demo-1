@@ -1,0 +1,355 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RIDE. - Rider Dashboard</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="app-shell">
+  <!-- 
+    RIDE Platform - Rider Dashboard
+    Copyright (c) 2025 Newton & Devin AI Assistant. All rights reserved.
+    Purpose: Main rider dashboard for booking, tracking, and managing rides
+    Code Flow: Dashboard Actions → API Calls → Data Updates → UI Refresh
+  -->
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <span class="brand-mark">R</span>
+          <span>RIDE.</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item active">
+          <span class="nav-icon">📍</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="book.html" class="nav-item">
+          <span class="nav-icon">🚗</span>
+          <span>Book a Ride</span>
+        </a>
+        <a href="tracking.html" class="nav-item">
+          <span class="nav-icon">🧭</span>
+          <span>Live Tracking</span>
+        </a>
+        <a href="wallet.html" class="nav-item">
+          <span class="nav-icon">💳</span>
+          <span>Wallet</span>
+        </a>
+        <a href="delivery.html" class="nav-item">
+          <span class="nav-icon">📦</span>
+          <span>Package Delivery</span>
+        </a>
+        <a href="corporate.html" class="nav-item">
+          <span class="nav-icon">🏢</span>
+          <span>Corporate Accounts</span>
+        </a>
+        <a href="trips.html" class="nav-item">
+          <span class="nav-icon">📋</span>
+          <span>Trip History</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+          <span class="nav-icon">👤</span>
+          <span>Profile</span>
+        </a>
+        <a href="sos.html" class="nav-item">
+          <span class="nav-icon">🛡️</span>
+          <span>SOS Emergency</span>
+        </a>
+        <a href="assistant.html" class="nav-item">
+          <span class="nav-icon">🤖</span>
+          <span>AI Assistant</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-icon">🏠</span>
+          <span>Back to Home</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button class="menu-toggle" id="menuToggle">☰</button>
+          <div>
+            <h1>Rider Dashboard</h1>
+            <p class="header-path">/dashboard</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="user-avatar">SN</div>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <div class="demo-banner">Investor demo mode — no account required. <a href="../index.html" style="text-decoration:underline">Back to public site</a></div>
+
+        <!-- Rider Waitlist Banner -->
+        <div class="waitlist-banner rider">
+          <div class="waitlist-content">
+            <span class="waitlist-icon">📋</span>
+            <div>
+              <h3>Join Rider Waitlist</h3>
+              <p>Get priority access to rides and exclusive offers</p>
+            </div>
+          </div>
+          <button class="waitlist-btn" onclick="openWaitlistModal()">Join Waitlist</button>
+        </div>
+
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+          <h2>Welcome back, Sarah 👋</h2>
+          <p class="muted">Here's your ride activity overview</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <section class="stats-grid">
+          <div class="stat-card active">
+            <div class="stat-header">
+              <div class="stat-icon green">🚗</div>
+              <span class="stat-badge active">Active</span>
+            </div>
+            <div class="stat-value">247</div>
+            <div class="stat-label">Total Rides</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon amber">⭐</div>
+              <span class="stat-badge rating">Rating</span>
+            </div>
+            <div class="stat-value">4.8</div>
+            <div class="stat-label">Your Rating</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon blue">💳</div>
+              <span class="stat-badge currency">UGX</span>
+            </div>
+            <div class="stat-value">85,000</div>
+            <div class="stat-label">Wallet Balance</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon rose">🔔</div>
+              <span class="stat-badge new">New</span>
+            </div>
+            <div class="stat-value">3</div>
+            <div class="stat-label">Unread Notifications</div>
+          </div>
+        </section>
+
+        <!-- Main Grid -->
+        <section class="dashboard-grid-2">
+          <!-- Active Ride Card -->
+          <div class="content-card active-ride">
+            <div class="card-header">
+              <h3>Active Ride</h3>
+              <span class="status-badge ride-status">
+                <span class="status-dot"></span>
+                En Route
+              </span>
+            </div>
+            <div class="ride-details">
+              <div class="driver-info">
+                <div class="driver-avatar">JO</div>
+                <div class="driver-details">
+                  <div class="driver-name">James Okello</div>
+                  <div class="driver-vehicle">Toyota Corolla - White • UAK 456J</div>
+                </div>
+                <div class="driver-rating">
+                  <div class="eta">ETA: 3 min</div>
+                  <div class="rating">⭐ 4.9</div>
+                </div>
+              </div>
+
+              <div class="route-visual">
+                <div class="route-points">
+                  <div class="route-point pickup"></div>
+                  <div class="route-line"></div>
+                  <div class="route-point dropoff"></div>
+                </div>
+                <div class="route-text">
+                  <div>Kisaasi Roundabout, Kampala</div>
+                  <div>Uganda House, Kampala CBD</div>
+                </div>
+              </div>
+
+              <div class="ride-summary">
+                <div><span class="muted">Fare:</span> <strong>UGX 25,000</strong></div>
+                <div><span class="muted">Duration:</span> <strong>25 min</strong></div>
+                <div><span class="muted">Distance:</span> <strong>8.2 km</strong></div>
+              </div>
+            </div>
+            <a class="app-btn" href="tracking.html">Open Live Tracking →</a>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="content-card">
+            <h3>Quick Actions</h3>
+            <div class="action-grid">
+              <a class="action-btn primary" href="book.html">
+                <span class="action-icon">🚗</span>
+                <span>Book a Ride</span>
+              </a>
+              <a class="action-btn secondary" href="wallet.html">
+                <span class="action-icon">💳</span>
+                <span>Top Up Wallet</span>
+              </a>
+              <a class="action-btn secondary" href="sos.html">
+                <span class="action-icon">🛡️</span>
+                <span>Safety / SOS</span>
+              </a>
+              <a class="action-btn secondary" href="assistant.html">
+                <span class="action-icon">🤖</span>
+                <span>Ask RIDE AI</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Waitlist Status -->
+        <section class="content-card waitlist-status">
+          <div class="card-header">
+            <h3>🎟 Waitlist Status</h3>
+            <p class="muted">Your position and benefits</p>
+          </div>
+          <div class="waitlist-info">
+            <div class="waitlist-position">
+              <span class="position-label">Your Position</span>
+              <span class="position-number">#347</span>
+            </div>
+            <div class="waitlist-benefits">
+              <span class="benefit-badge">⚡ 3 Months Surge-Free</span>
+              <span class="benefit-badge">🎁 Welcome Bonus: UGX 10k</span>
+            </div>
+            <button class="btn btn-primary btn-small" onclick="openWaitlistModal()">Invite Friends & Jump Queue</button>
+          </div>
+        </section>
+
+        <!-- Fare Options -->
+        <section class="content-card fare-options">
+          <div class="card-header">
+            <h3>Fare Options</h3>
+            <p class="muted">Kisaasi, Kampala → Kampala CBD</p>
+          </div>
+          <div class="fare-grid">
+            <div class="fare-option">
+              <div>
+                <div class="fare-name">Economy</div>
+                <div class="fare-details">3 min away • 12 available</div>
+              </div>
+              <div class="fare-price">UGX 18,000</div>
+            </div>
+            <div class="fare-option selected">
+              <div>
+                <div class="fare-name">Comfort</div>
+                <div class="fare-details">2 min away • 8 available</div>
+              </div>
+              <div class="fare-price">UGX 25,000</div>
+            </div>
+            <div class="fare-option">
+              <div>
+                <div class="fare-name">Premium</div>
+                <div class="fare-details">5 min away • 3 available</div>
+              </div>
+              <div class="fare-price">UGX 40,000</div>
+            </div>
+            <div class="fare-option">
+              <div>
+                <div class="fare-name">XL (6 seats)</div>
+                <div class="fare-details">8 min away • 2 available</div>
+              </div>
+              <div class="fare-price">UGX 50,000</div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.dashboard-sidebar').classList.toggle('collapsed');
+    });
+
+    // Waitlist modal functions
+    function openWaitlistModal() {
+      document.getElementById('waitlistModal').style.display = 'flex';
+    }
+
+    function closeWaitlistModal() {
+      document.getElementById('waitlistModal').style.display = 'none';
+    }
+
+    // Waitlist form submission
+    document.getElementById('riderWaitlistForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+      data.desired_role = 'rider';
+
+      try {
+        const response = await fetch('/api/waitlist/join', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+          alert('Successfully joined rider waitlist!');
+          closeWaitlistModal();
+          e.target.reset();
+        } else {
+          alert('Failed to join waitlist. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Demo: Successfully joined waitlist');
+        closeWaitlistModal();
+        e.target.reset();
+      }
+    });
+  </script>
+
+  <!-- Waitlist Modal -->
+  <div class="modal" id="waitlistModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Join Rider Waitlist</h2>
+        <button class="close-btn" onclick="closeWaitlistModal()">×</button>
+      </div>
+      <form id="riderWaitlistForm">
+        <label>Full Name *
+          <input type="text" name="full_name" required placeholder="Enter your full name">
+        </label>
+        <label>Phone Number *
+          <input type="tel" name="phone" required placeholder="Enter your phone number">
+        </label>
+        <label>Email
+          <input type="email" name="email" placeholder="Enter your email address">
+        </label>
+        <label>City/Area *
+          <input type="text" name="city" required placeholder="e.g. Kampala, Entebbe">
+        </label>
+        <label class="toggle-line">
+          <input type="checkbox" name="notify" checked>
+          <span class="fake-toggle"></span>
+          <span><b>Notify me when I'm approved</b></span>
+        </label>
+        <button type="submit" class="app-btn full-width">Join Waitlist</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="dashboard-footer">
+    <div>© 2025 Newton & Devin AI Assistant. All rights reserved.</div>
+    <div>RIDE. Move With Impact</div>
+  </footer>
+</body>
+</html>

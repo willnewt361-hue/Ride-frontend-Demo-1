@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RIDE. - Driver Profile</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="app-shell">
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <span class="brand-mark">R</span>
+          <span>RIDE.</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="driver-dashboard.html" class="nav-item">
+          <span class="nav-icon">👨‍✈️</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="driver-rides.html" class="nav-item">
+          <span class="nav-icon">🚗</span>
+          <span>Ride Requests</span>
+        </a>
+        <a href="driver-earnings.html" class="nav-item">
+          <span class="nav-icon">💰</span>
+          <span>Earnings</span>
+        </a>
+        <a href="driver-wallet.html" class="nav-item">
+          <span class="nav-icon">💳</span>
+          <span>Wallet</span>
+        </a>
+        <a href="driver-profile.html" class="nav-item active">
+          <span class="nav-icon">👤</span>
+          <span>Profile</span>
+        </a>
+        <a href="driver-safety.html" class="nav-item">
+          <span class="nav-icon">🛡️</span>
+          <span>Safety</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button id="menuToggle" class="menu-toggle">☰</button>
+          <h1>👤 Driver Profile</h1>
+        </div>
+      </header>
+
+      <section class="content-card">
+        <h3>Personal Information</h3>
+        <form>
+          <label>Full Name
+            <input type="text" value="James Okello">
+          </label>
+          <label>Phone Number
+            <input type="tel" value="+256 712 345 678">
+          </label>
+          <label>Email
+            <input type="email" value="james.okello@ride.ug">
+          </label>
+          <button class="btn btn-primary">Update Profile</button>
+        </form>
+      </section>
+
+      <section class="content-card">
+        <h3>Vehicle Information</h3>
+        <div class="vehicle-info">
+          <span>Toyota Corolla - White</span>
+          <span>Plate: UAK 456J</span>
+          <span>✓ Verified</span>
+        </div>
+        <button class="btn btn-secondary">Edit Vehicle</button>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.dashboard-sidebar').classList.toggle('open');
+    });
+  </script>
+
+  <footer class="dashboard-footer">
+    <div>© 2025 Newton & Devin AI Assistant. All rights reserved.</div>
+    <div>RIDE. Move With Impact</div>
+  </footer>
+</body>
+</html>

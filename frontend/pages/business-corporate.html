@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RIDE. - Business Corporate</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="app-shell">
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <span class="brand-mark">R</span>
+          <span>RIDE.</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="business-dashboard.html" class="nav-item">
+          <span class="nav-icon">💼</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="business-corporate.html" class="nav-item active">
+          <span class="nav-icon">🏢</span>
+          <span>Corporate</span>
+        </a>
+        <a href="corporate.html" class="nav-item">
+          <span class="nav-icon">📋</span>
+          <span>Register</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button id="menuToggle" class="menu-toggle">☰</button>
+          <h1>🏢 Corporate Partners</h1>
+        </div>
+      </header>
+
+      <section class="content-card">
+        <h3>Active Corporate Accounts</h3>
+        <div class="corporate-list">
+          <div class="corporate-item">
+            <span>TechCorp Uganda</span>
+            <span>25 employees</span>
+            <span>UGX 450,000 balance</span>
+          </div>
+          <div class="corporate-item">
+            <span>Hotel Serenity</span>
+            <span>8 employees</span>
+            <span>UGX 120,000 balance</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.dashboard-sidebar').classList.toggle('open');
+    });
+  </script>
+
+  <footer class="dashboard-footer">
+    <div>© 2025 Newton & Devin AI Assistant. All rights reserved.</div>
+    <div>RIDE. Move With Impact</div>
+  </footer>
+</body>
+</html>

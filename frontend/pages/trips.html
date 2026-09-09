@@ -1,0 +1,262 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Trip History — RiDe</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="app-shell">
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <span class="brand-mark">R</span>
+          <span>RiDe</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item">
+          <span class="nav-icon">📍</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="book.html" class="nav-item">
+          <span class="nav-icon">🚗</span>
+          <span>Book a Ride</span>
+        </a>
+        <a href="tracking.html" class="nav-item">
+          <span class="nav-icon">🧭</span>
+          <span>Live Tracking</span>
+        </a>
+        <a href="wallet.html" class="nav-item">
+          <span class="nav-icon">💳</span>
+          <span>Wallet</span>
+        </a>
+        <a href="trips.html" class="nav-item active">
+          <span class="nav-icon">📋</span>
+          <span>Trip History</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+          <span class="nav-icon">👤</span>
+          <span>Profile</span>
+        </a>
+        <a href="sos.html" class="nav-item">
+          <span class="nav-icon">🛡️</span>
+          <span>SOS Emergency</span>
+        </a>
+        <a href="assistant.html" class="nav-item">
+          <span class="nav-icon">🤖</span>
+          <span>AI Assistant</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-icon">🏠</span>
+          <span>Back to Home</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button class="menu-toggle" id="menuToggle">☰</button>
+          <div>
+            <h1>Trip History</h1>
+            <p class="header-path">/trips</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="user-avatar">SN</div>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <!-- Trip Stats -->
+        <section class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon green">🚗</div>
+            </div>
+            <div class="stat-value">247</div>
+            <div class="stat-label">Total Trips</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon blue">💰</div>
+            </div>
+            <div class="stat-value">UGX 2.4M</div>
+            <div class="stat-label">Total Spent</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon amber">📊</div>
+            </div>
+            <div class="stat-value">UGX 9,700</div>
+            <div class="stat-label">Average Fare</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon rose">⭐</div>
+            </div>
+            <div class="stat-value">4.8 ★</div>
+            <div class="stat-label">Average Rating</div>
+          </div>
+        </section>
+
+        <!-- Filter Tabs -->
+        <div class="trip-filters">
+          <button class="filter-tab active" data-filter="all">All Trips</button>
+          <button class="filter-tab" data-filter="completed">Completed</button>
+          <button class="filter-tab" data-filter="cancelled">Cancelled</button>
+          <button class="filter-tab" data-filter="scheduled">Scheduled</button>
+        </div>
+
+        <!-- Trip List -->
+        <div class="content-card trips-card">
+          <div class="trips-list">
+            <div class="trip-item" data-status="completed">
+              <div class="trip-route">
+                <div class="route-point pickup"></div>
+                <div class="route-line"></div>
+                <div class="route-point dropoff"></div>
+              </div>
+              <div class="trip-details">
+                <div class="trip-locations">
+                  <div class="trip-from">Kisaasi, Kampala</div>
+                  <div class="trip-to">Kampala CBD</div>
+                </div>
+                <div class="trip-meta">
+                  <span>Jan 10, 2025 • 14:30</span>
+                  <span>James Okello • Toyota Corolla - White</span>
+                </div>
+              </div>
+              <div class="trip-fare">
+                <div class="fare-amount">UGX 25,000</div>
+                <div class="trip-rating">⭐ 5.0</div>
+              </div>
+            </div>
+
+            <div class="trip-item" data-status="completed">
+              <div class="trip-route">
+                <div class="route-point pickup"></div>
+                <div class="route-line"></div>
+                <div class="route-point dropoff"></div>
+              </div>
+              <div class="trip-details">
+                <div class="trip-locations">
+                  <div class="trip-from">Ntinda, Kampala</div>
+                  <div class="trip-to">Entebbe Airport</div>
+                </div>
+                <div class="trip-meta">
+                  <span>Jan 9, 2025 • 08:15</span>
+                  <span>Peter Wasswa • Toyota Premio - Silver</span>
+                </div>
+              </div>
+              <div class="trip-fare">
+                <div class="fare-amount">UGX 65,000</div>
+                <div class="trip-rating">⭐ 4.0</div>
+              </div>
+            </div>
+
+            <div class="trip-item" data-status="completed">
+              <div class="trip-route">
+                <div class="route-point pickup"></div>
+                <div class="route-line"></div>
+                <div class="route-point dropoff"></div>
+              </div>
+              <div class="trip-details">
+                <div class="trip-locations">
+                  <div class="trip-from">Acacia Mall, Kampala</div>
+                  <div class="trip-to">Muyenga, Kampala</div>
+                </div>
+                <div class="trip-meta">
+                  <span>Jan 8, 2025 • 19:45</span>
+                  <span>Hassan Mukiibi • Honda Fit - Blue</span>
+                </div>
+              </div>
+              <div class="trip-fare">
+                <div class="fare-amount">UGX 12,000</div>
+                <div class="trip-rating">⭐ 5.0</div>
+              </div>
+            </div>
+
+            <div class="trip-item" data-status="completed">
+              <div class="trip-route">
+                <div class="route-point pickup"></div>
+                <div class="route-line"></div>
+                <div class="route-point dropoff"></div>
+              </div>
+              <div class="trip-details">
+                <div class="trip-locations">
+                  <div class="trip-from">Kololo, Kampala</div>
+                  <div class="trip-to">Bugolobi, Kampala</div>
+                </div>
+                <div class="trip-meta">
+                  <span>Jan 7, 2025 • 11:00</span>
+                  <span>Robert Ssentongo • Toyota Camry - Black</span>
+                </div>
+              </div>
+              <div class="trip-fare">
+                <div class="fare-amount">UGX 15,000</div>
+                <div class="trip-rating">⭐ 4.0</div>
+              </div>
+            </div>
+
+            <div class="trip-item" data-status="scheduled">
+              <div class="trip-route">
+                <div class="route-point pickup"></div>
+                <div class="route-line dashed"></div>
+                <div class="route-point dropoff"></div>
+              </div>
+              <div class="trip-details">
+                <div class="trip-locations">
+                  <div class="trip-from">Kisaasi, Kampala</div>
+                  <div class="trip-to">Entebbe Airport</div>
+                </div>
+                <div class="trip-meta">
+                  <span>Jan 12, 2025 • 06:00</span>
+                  <span class="scheduled-badge">Scheduled</span>
+                </div>
+              </div>
+              <div class="trip-fare">
+                <div class="fare-amount">UGX 65,000</div>
+                <div class="trip-status scheduled">Upcoming</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Filter functionality
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const tripItems = document.querySelectorAll('.trip-item');
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filter = tab.dataset.filter;
+        tripItems.forEach(item => {
+          if (filter === 'all' || item.dataset.status === filter) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Menu toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.dashboard-sidebar').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

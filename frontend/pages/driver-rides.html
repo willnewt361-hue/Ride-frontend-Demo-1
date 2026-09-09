@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RIDE. - Driver Rides</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="app-shell">
+  <!-- 
+    RIDE Platform - Driver Rides Page
+    Copyright (c) 2025 Newton & Devin AI Assistant. All rights reserved.
+  -->
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <span class="brand-mark">R</span>
+          <span>RIDE.</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="driver-dashboard.html" class="nav-item">
+          <span class="nav-icon">👨‍✈️</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="driver-rides.html" class="nav-item active">
+          <span class="nav-icon">🚗</span>
+          <span>Ride Requests</span>
+        </a>
+        <a href="driver-earnings.html" class="nav-item">
+          <span class="nav-icon">💰</span>
+          <span>Earnings</span>
+        </a>
+        <a href="driver-wallet.html" class="nav-item">
+          <span class="nav-icon">💳</span>
+          <span>Wallet</span>
+        </a>
+        <a href="driver-profile.html" class="nav-item">
+          <span class="nav-icon">👤</span>
+          <span>Profile</span>
+        </a>
+        <a href="driver-safety.html" class="nav-item">
+          <span class="nav-icon">🛡️</span>
+          <span>Safety</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button id="menuToggle" class="menu-toggle">☰</button>
+          <h1>🚗 Ride Requests</h1>
+        </div>
+      </header>
+
+      <section class="content-card">
+        <div class="card-header">
+          <h3>Available Rides</h3>
+        </div>
+        <div class="ride-list">
+          <div class="ride-request">
+            <div class="ride-info">
+              <span class="ride-route">Kisaasi → Kampala CBD</span>
+              <span class="ride-fare">UGX 18,000</span>
+              <span class="ride-distance">8.2 km</span>
+            </div>
+            <div class="ride-actions">
+              <button class="btn btn-primary">Accept</button>
+              <button class="btn btn-secondary">Decline</button>
+            </div>
+          </div>
+          <div class="ride-request">
+            <div class="ride-info">
+              <span class="ride-route">Ntinda → Nakawa</span>
+              <span class="ride-fare">UGX 12,000</span>
+              <span class="ride-distance">5.5 km</span>
+            </div>
+            <div class="ride-actions">
+              <button class="btn btn-primary">Accept</button>
+              <button class="btn btn-secondary">Decline</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.dashboard-sidebar').classList.toggle('open');
+    });
+  </script>
+
+  <footer class="dashboard-footer">
+    <div>© 2025 Newton & Devin AI Assistant. All rights reserved.</div>
+    <div>RIDE. Move With Impact</div>
+  </footer>
+</body>
+</html>

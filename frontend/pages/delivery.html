@@ -1,0 +1,316 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RIDE. - Package Delivery</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="app-shell">
+  <!-- 
+    RIDE Platform - Package Delivery Page
+    Copyright (c) 2025 Newton & Devin AI Assistant. All rights reserved.
+    Purpose: Package delivery booking and tracking
+    Code Flow: Delivery Form → API → Driver Assignment → Tracking
+  -->
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <span class="brand-mark">R</span>
+          <span>RIDE.</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item">
+          <span class="nav-icon">📍</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="book.html" class="nav-item">
+          <span class="nav-icon">🚗</span>
+          <span>Book a Ride</span>
+        </a>
+        <a href="delivery.html" class="nav-item active">
+          <span class="nav-icon">📦</span>
+          <span>Package Delivery</span>
+        </a>
+        <a href="wallet.html" class="nav-item">
+          <span class="nav-icon">💳</span>
+          <span>Wallet</span>
+        </a>
+        <a href="trips.html" class="nav-item">
+          <span class="nav-icon">📋</span>
+          <span>Delivery History</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+          <span class="nav-icon">👤</span>
+          <span>Profile</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button id="menuToggle" class="menu-toggle">☰</button>
+          <h1>📦 Package Delivery</h1>
+        </div>
+        <div class="header-right">
+          <span class="welcome-text">Send packages across Kampala</span>
+        </div>
+      </header>
+
+      <!-- Delivery Form -->
+      <section class="content-card">
+        <div class="card-header">
+          <h2>Send a Package</h2>
+          <p class="muted">Fill in the details to schedule a delivery</p>
+        </div>
+        <form id="deliveryForm">
+          <div class="form-section">
+            <h3>Sender Information</h3>
+            <label>Full Name *
+              <input type="text" name="sender_name" required placeholder="Your full name">
+            </label>
+            <label>Phone Number *
+              <input type="tel" name="sender_phone" required placeholder="+256 7XX XXX XXX">
+            </label>
+            <label>Pickup Address *
+              <input type="text" name="sender_address" required placeholder="e.g. Kololo, Kampala">
+            </label>
+          </div>
+
+          <div class="form-section">
+            <h3>Recipient Information</h3>
+            <label>Recipient Name *
+              <input type="text" name="recipient_name" required placeholder="Recipient's full name">
+            </label>
+            <label>Recipient Phone *
+              <input type="tel" name="recipient_phone" required placeholder="+256 7XX XXX XXX">
+            </label>
+            <label>Delivery Address *
+              <input type="text" name="recipient_address" required placeholder="e.g. Nakasero, Kampala">
+            </label>
+          </div>
+
+          <div class="form-section">
+            <h3>Package Details</h3>
+            <label>Package Description *
+              <input type="text" name="package_description" required placeholder="e.g. Documents, Electronics, etc.">
+            </label>
+            <label>Weight (kg) *
+              <input type="number" name="package_weight" required placeholder="Weight in kg" min="0.1" step="0.1">
+            </label>
+            <label>Package Value (UGX)
+              <input type="number" name="package_value" placeholder="Optional: for insurance">
+            </label>
+            <label>Special Instructions
+              <textarea name="special_instructions" placeholder="Any special handling instructions"></textarea>
+            </label>
+          </div>
+
+          <div class="form-section">
+            <h3>Delivery Type</h3>
+            <fieldset>
+              <legend>Select delivery speed *</legend>
+              <div class="choice-row">
+                <label class="choice">
+                  <input type="radio" name="delivery_type" value="standard" checked>
+                  <span>📦</span>
+                  <div>
+                    <strong>Standard</strong>
+                    <small>2-4 hours • Base rate</small>
+                  </div>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="delivery_type" value="express">
+                  <span>⚡</span>
+                  <div>
+                    <strong>Express</strong>
+                    <small>1-2 hours • 1.5x rate</small>
+                  </div>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="delivery_type" value="same_day">
+                  <span>🚀</span>
+                  <div>
+                    <strong>Same Day</strong>
+                    <small>30-60 min • 2x rate</small>
+                  </div>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="form-section">
+            <h3>Payment Method</h3>
+            <fieldset>
+              <legend>Select payment method *</legend>
+              <div class="choice-row">
+                <label class="choice">
+                  <input type="radio" name="payment_method" value="cash" checked>
+                  <span>💵</span>
+                  <span>Cash on Delivery</span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="payment_method" value="wallet">
+                  <span>💳</span>
+                  <span>Wallet</span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="payment_method" value="mobile_money">
+                  <span>📱</span>
+                  <span>Mobile Money</span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="delivery-estimate">
+            <div class="estimate-label">Estimated Fare</div>
+            <div class="estimate-value" id="estimatedFare">UGX 5,000</div>
+            <div class="estimate-time" id="estimatedTime">2-4 hours</div>
+          </div>
+
+          <button type="submit" class="app-btn full-width">Schedule Delivery</button>
+          <p id="deliveryMessage" class="form-message"></p>
+        </form>
+      </section>
+
+      <!-- Track Delivery -->
+      <section class="content-card">
+        <div class="card-header">
+          <h2>Track a Delivery</h2>
+          <p class="muted">Enter tracking number to check status</p>
+        </div>
+        <form id="trackingForm">
+          <label>Tracking Number *
+            <input type="text" name="tracking_number" required placeholder="e.g. PKG-20250115100000">
+          </label>
+          <button type="submit" class="app-btn">Track Package</button>
+        </form>
+        <div id="trackingResult" class="tracking-result"></div>
+      </section>
+
+      <!-- Pricing Info -->
+      <section class="content-card">
+        <div class="card-header">
+          <h2>💰 Delivery Pricing</h2>
+        </div>
+        <div class="pricing-table">
+          <div class="pricing-row">
+            <span>Base Fare</span>
+            <span>UGX 5,000</span>
+          </div>
+          <div class="pricing-row">
+            <span>Weight Fee</span>
+            <span>UGX 500 per kg</span>
+          </div>
+          <div class="pricing-row">
+            <span>Standard Delivery</span>
+            <span>1.0x multiplier</span>
+          </div>
+          <div class="pricing-row">
+            <span>Express Delivery</span>
+            <span>1.5x multiplier</span>
+          </div>
+          <div class="pricing-row">
+            <span>Same Day Delivery</span>
+            <span>2.0x multiplier</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Delivery form submission
+    document.getElementById('deliveryForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+
+      try {
+        const response = await fetch('http://localhost:8000/api/delivery/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          const msg = document.getElementById('deliveryMessage');
+          msg.textContent = `Delivery created! Tracking number: ${result.tracking_number}. Estimated time: ${result.estimated_time}`;
+          msg.className = 'form-message success';
+          e.target.reset();
+        } else {
+          throw new Error('Failed to create delivery');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        const msg = document.getElementById('deliveryMessage');
+        msg.textContent = 'Demo: Delivery created successfully';
+        msg.className = 'form-message success';
+      }
+    });
+
+    // Tracking form submission
+    document.getElementById('trackingForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const trackingNumber = e.target.tracking_number.value;
+
+      try {
+        const response = await fetch(`http://localhost:8000/api/delivery/track/${trackingNumber}`);
+        if (response.ok) {
+          const result = await response.json();
+          const resultDiv = document.getElementById('trackingResult');
+          resultDiv.innerHTML = `
+            <div class="tracking-info">
+              <div class="tracking-status">Status: ${result.status}</div>
+              <div class="tracking-location">Current Location: ${result.current_location}</div>
+              <div class="tracking-eta">ETA: ${result.estimated_arrival}</div>
+              <div class="tracking-driver">
+                <strong>Driver:</strong> ${result.driver.name}<br>
+                <strong>Phone:</strong> ${result.driver.phone}<br>
+                <strong>Vehicle:</strong> ${result.driver.vehicle}
+              </div>
+            </div>
+          `;
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('trackingResult').innerHTML = '<p class="error">Demo tracking info</p>';
+      }
+    });
+
+    // Update estimate on delivery type change
+    document.querySelectorAll('input[name="delivery_type"]').forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        const weight = parseFloat(document.querySelector('input[name="package_weight"]').value) || 1;
+        const type = e.target.value;
+        
+        const baseFare = 5000;
+        const weightFee = weight * 500;
+        const multipliers = { standard: 1.0, express: 1.5, same_day: 2.0 };
+        const times = { standard: '2-4 hours', express: '1-2 hours', same_day: '30-60 minutes' };
+        
+        const fare = Math.round((baseFare + weightFee) * multipliers[type]);
+        document.getElementById('estimatedFare').textContent = `UGX ${fare.toLocaleString()}`;
+        document.getElementById('estimatedTime').textContent = times[type];
+      });
+    });
+
+    // Menu toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.dashboard-sidebar').classList.toggle('open');
+    });
+  </script>
+
+  <footer class="dashboard-footer">
+    <div>© 2025 Newton & Devin AI Assistant. All rights reserved.</div>
+    <div>RIDE. Move With Impact</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RIDE. - Business Dashboard</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="app-shell">
+  <!-- 
+    RIDE Platform - Business Dashboard
+    Copyright (c) 2025 Newton & Devin AI Assistant. All rights reserved.
+    Purpose: Business dashboard for managing partnerships, earnings, and waitlist
+    Code Flow: Business Actions → API Calls → Data Updates → UI Refresh
+  -->
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <span class="brand-mark">R</span>
+          <span>RIDE.</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="business-dashboard.html" class="nav-item active">
+          <span class="nav-icon">💼</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="business-earnings.html" class="nav-item">
+          <span class="nav-icon">💰</span>
+          <span>Earnings</span>
+        </a>
+        <a href="business-analytics.html" class="nav-item">
+          <span class="nav-icon">📊</span>
+          <span>Analytics</span>
+        </a>
+        <a href="business-corporate.html" class="nav-item">
+          <span class="nav-icon">🏢</span>
+          <span>Corporate</span>
+        </a>
+        <a href="business-referrals.html" class="nav-item">
+          <span class="nav-icon">🤝</span>
+          <span>Referrals</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-icon">🏠</span>
+          <span>Back to Home</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button class="menu-toggle" id="menuToggle">☰</button>
+          <div>
+            <h1>Business Dashboard</h1>
+            <p class="header-path">/business/dashboard</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="user-avatar">BD</div>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <!-- Business Waitlist Banner -->
+        <div class="waitlist-banner business">
+          <div class="waitlist-content">
+            <span class="waitlist-icon">🏢</span>
+            <div>
+              <h3>Corporate Partnership Waitlist</h3>
+              <p>Get exclusive rates and priority booking for your business</p>
+            </div>
+          </div>
+          <button class="waitlist-btn" onclick="openWaitlistModal()">Join Waitlist</button>
+        </div>
+
+        <!-- Business Stats -->
+        <section class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon green">💰</div>
+            </div>
+            <div class="stat-value">UGX 2.85B</div>
+            <div class="stat-label">Total Revenue</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon blue">👨‍✈️</div>
+            </div>
+            <div class="stat-value">UGX 1.99B</div>
+            <div class="stat-label">Driver Earnings</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon amber">💼</div>
+            </div>
+            <div class="stat-value">UGX 855M</div>
+            <div class="stat-label">Commissions</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon rose">🏢</div>
+            </div>
+            <div class="stat-value">45</div>
+            <div class="stat-label">Corporate Accounts</div>
+          </div>
+        </section>
+
+        <!-- Commission Rate -->
+        <div class="content-card">
+          <h3>Commission Structure</h3>
+          <div class="commission-display">
+            <div class="commission-rate">30%</div>
+            <div class="commission-label">Current Commission Rate</div>
+          </div>
+          <button class="app-btn secondary">Adjust Rate</button>
+        </div>
+
+        <!-- Referral Program -->
+        <div class="content-card">
+          <h3>Referral Program</h3>
+          <div class="referral-stats">
+            <div class="referral-stat">
+              <div class="stat-value">1,250</div>
+              <div class="stat-label">Active Referrals</div>
+            </div>
+            <div class="referral-stat">
+              <div class="stat-value">UGX 10K</div>
+              <div class="stat-label">Bonus per Referral</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partnership Waitlist -->
+        <div class="content-card">
+          <div class="card-header">
+            <h3>🎟 Partnership Waitlist</h3>
+            <button class="app-btn secondary">View All</button>
+          </div>
+          <div class="waitlist-list">
+            <div class="waitlist-item">
+              <div class="waitlist-user">
+                <span class="user-name">TechCorp Uganda</span>
+                <span class="user-phone">partnerships@techcorp.ug</span>
+              </div>
+              <div class="waitlist-meta">
+                <span class="position">#5</span>
+                <span class="city">Kampala</span>
+              </div>
+            </div>
+            <div class="waitlist-item">
+              <div class="waitlist-user">
+                <span class="user-name">Hotel Serenity</span>
+                <span class="user-phone">info@hotelserenity.com</span>
+              </div>
+              <div class="waitlist-meta">
+                <span class="position">#8</span>
+                <span class="city">Entebbe</span>
+              </div>
+            </div>
+            <div class="waitlist-item">
+              <div class="waitlist-user">
+                <span class="user-name">East Africa Logistics</span>
+                <span class="user-phone">contact@eallogistics.com</span>
+              </div>
+              <div class="waitlist-meta">
+                <span class="position">#12</span>
+                <span class="city">Mukono</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Waitlist Modal -->
+  <div class="modal" id="waitlistModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Join Business Waitlist</h2>
+        <button class="close-btn" onclick="closeWaitlistModal()">×</button>
+      </div>
+      <form id="businessWaitlistForm">
+        <label>Company Name *
+          <input type="text" name="full_name" required placeholder="Enter company name">
+        </label>
+        <label>Contact Email *
+          <input type="email" name="email" required placeholder="Enter contact email">
+        </label>
+        <label>Phone Number *
+          <input type="tel" name="phone" required placeholder="Enter phone number">
+        </label>
+        <label>City/Area *
+          <input type="text" name="city" required placeholder="e.g. Kampala, Entebbe">
+        </label>
+        <label class="toggle-line">
+          <input type="checkbox" name="notify" checked>
+          <span class="fake-toggle"></span>
+          <span><b>Notify me when partnership is approved</b></span>
+        </label>
+        <button type="submit" class="app-btn full-width">Join Partnership Waitlist</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openWaitlistModal() {
+      document.getElementById('waitlistModal').style.display = 'block';
+    }
+
+    function closeWaitlistModal() {
+      document.getElementById('waitlistModal').style.display = 'none';
+    }
+
+    document.getElementById('businessWaitlistForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+      data.desired_role = 'business';
+
+      try {
+        const response = await fetch('/api/waitlist/join', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+          alert('Successfully joined business waitlist!');
+          closeWaitlistModal();
+          e.target.reset();
+        } else {
+          alert('Failed to join waitlist. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Demo: Successfully joined waitlist');
+        closeWaitlistModal();
+        e.target.reset();
+      }
+    });
+
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.dashboard-sidebar').classList.toggle('open');
+    });
+  </script>
+
+  <footer class="dashboard-footer">
+    <div>© 2025 Newton & Devin AI Assistant. All rights reserved.</div>
+    <div>RIDE. Move With Impact</div>
+  </footer>
+</body>
+</html>

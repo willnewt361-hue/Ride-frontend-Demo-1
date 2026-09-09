@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RIDE. - Invite-Only in Kampala</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="landing">
+  <!-- 
+    RIDE Platform Landing Page
+    Copyright (c) 2025 Newton & Devin AI Assistant. All rights reserved.
+    Purpose: Main landing page for waitlist registration
+    Code Flow: Landing Page → Waitlist Form → API → Database → Confirmation
+  -->
+  
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">R</span><span>RIDE.</span></a>
+    <div class="location-info">
+      <span class="location-tag">Kampala</span>
+      <span class="exclusive-tag">INVITE-ONLY</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">LIMITED AVAILABILITY</div>
+        <h1>RIDE. is invite-only in Kampala right now</h1>
+        <p class="hero-lead">Limited to the first 1,000 passengers for quick arrivals. Skip the rush hour doom and join the sweet treats movement.</p>
+        <div class="hero-quote">
+          <p>"Join and register now for sweet treats or you'll get into the rush hour doom"</p>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#waitlist">Join the Waitlist <span>→</span></a>
+          <a class="btn btn-ghost" href="pages/dashboard.html">Rider Dashboard</a>
+          <a class="btn btn-ghost" href="pages/driver-dashboard.html">Driver Dashboard</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-image">
+          <div class="people-group">
+            <div class="person person-1">👤</div>
+            <div class="person person-2">👩</div>
+            <div class="person person-3">�</div>
+          </div>
+          <div class="city-background"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="value-grid">
+      <article><span>⚡</span><h3>Avg arrival &lt;5 mins</h3><p>Quick pickups guaranteed</p></article>
+      <article><span>✓</span><h3>Verified Riders Only</h3><p>Safety-first community</p></article>
+      <article><span>🎟</span><h3>Limited to 1,000 spots</h3><p>Exclusive early access</p></article>
+    </section>
+
+    <section id="waitlist" class="waitlist-section">
+      <div class="waitlist-intro">
+        <div class="eyebrow">JOIN THE WAITLIST</div>
+        <h2>Request your invite code</h2>
+        <p>Secure your spot in the first 1,000 and get exclusive benefits when we launch.</p>
+        <div class="mini-note">Early adopters get 3 months of surge-free pricing and special offers.</div>
+      </div>
+
+      <form id="waitlistForm" class="waitlist-card">
+        <div class="card-heading"><span class="icon-box">🎟</span><div><h2>JOIN THE WAITLIST</h2><p>Request your invite code</p></div></div>
+
+        <label>Full Name *<input name="full_name" required placeholder="e.g. Sarah Nakato"></label>
+        <label>Phone Number *<input name="phone" required placeholder="+256 7XX XXX XXX"></label>
+        <label>Pickup Location *<input name="pickup_location" required placeholder="e.g. Kololo, Kampala or Nakasero Market"></label>
+
+        <fieldset>
+          <legend>I want to use RIDE as: *</legend>
+          <div class="choice-row">
+            <label class="choice"><input type="radio" name="role" value="rider" checked><span>👤</span>Rider</label>
+            <label class="choice"><input type="radio" name="role" value="driver"><span>👨‍✈️</span>Driver</label>
+            <label class="choice"><input type="radio" name="role" value="business"><span>🏢</span>Business</label>
+          </div>
+        </fieldset>
+
+        <label class="toggle-line"><input type="checkbox" name="notify" checked><span class="fake-toggle"></span><span><b>Notify me when my invite is ready</b><small>We'll text you your invite code when your spot is ready</small></span></label>
+
+        <button class="btn btn-primary btn-full" type="submit">JOIN WAITLIST TO GET INVITE CODE <span>→</span></button>
+        <p id="waitlistMessage" class="form-message"></p>
+        <div class="trust-badges">
+          <span>💳 No credit card needed</span>
+          <span>🔒 Secure & Private</span>
+          <span>🎟 Invite-only access</span>
+        </div>
+      </form>
+    </section>
+
+    <section class="referral-section">
+      <div class="referral-info">
+        <div class="referral-position">
+          <span class="position-number">#347</span>
+          <span class="referral-text">Invite 3 friends on WhatsApp to jump to #89 and get UGX 10k credit</span>
+        </div>
+        <button class="btn btn-whatsapp">Share on WhatsApp</button>
+      </div>
+      <div class="progress-section">
+        <div class="progress-header">
+          <span class="progress-text">Waitlist Progress</span>
+          <span class="progress-stats">1,243 joined - 87% full</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 87%"></div>
+        </div>
+        <div class="progress-message">Only 157 spots remaining — invites are limited</div>
+      </div>
+    </section>
+
+    <section class="dashboard-grid">
+      <a href="pages/dashboard.html" class="dashboard-card rider">
+        <div class="card-icon">🚗</div>
+        <h3>Rider Dashboard</h3>
+        <p>Book rides, track trips, manage wallet & preferences</p>
+        <div class="card-accent"></div>
+      </a>
+      <a href="pages/driver-dashboard.html" class="dashboard-card driver">
+        <div class="card-icon">👨‍✈️</div>
+        <h3>Driver Dashboard</h3>
+        <p>Accept rides, track earnings, manage trips & safety</p>
+        <div class="card-accent"></div>
+      </a>
+      <a href="pages/admin-dashboard.html" class="dashboard-card admin">
+        <div class="card-icon">🛡️</div>
+        <h3>Admin Dashboard</h3>
+        <p>Users, drivers, safety, analytics & system control</p>
+        <div class="card-accent"></div>
+      </a>
+      <a href="pages/business-dashboard.html" class="dashboard-card business">
+        <div class="card-icon">💼</div>
+        <h3>Business Dashboard</h3>
+        <p>Earnings, pricing, commissions, rewards & analytics</p>
+        <div class="card-accent"></div>
+      </a>
+      <a href="pages/delivery.html" class="dashboard-card ecosystem">
+        <div class="card-icon">📦</div>
+        <h3>Package Delivery</h3>
+        <p>Send packages across Kampala with tracking</p>
+        <div class="card-accent"></div>
+      </a>
+      <a href="pages/corporate.html" class="dashboard-card communication">
+        <div class="card-icon">🏢</div>
+        <h3>Corporate Accounts</h3>
+        <p>Corporate transportation & employee management</p>
+        <div class="card-accent"></div>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <div><strong>RIDE.</strong><span>Move With Impact</span></div>
+    <div>© 2025 Newton & Devin AI Assistant. All rights reserved.</div>
+    <div>Kampala, Uganda</div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

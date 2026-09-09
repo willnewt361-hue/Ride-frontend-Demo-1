@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RIDE. - Admin Dashboard</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="app-shell">
+  <!-- 
+    RIDE Platform - Admin Dashboard
+    Copyright (c) 2025 Newton & Devin AI Assistant. All rights reserved.
+    Purpose: Admin dashboard for managing users, drivers, waitlist, and platform analytics
+    Code Flow: Admin Actions → API Calls → Database Updates → UI Refresh
+  -->
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <span class="brand-mark">R</span>
+          <span>RIDE.</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="admin-dashboard.html" class="nav-item active">
+          <span class="nav-icon">🛡️</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="admin-users.html" class="nav-item">
+          <span class="nav-icon">👥</span>
+          <span>Users</span>
+        </a>
+        <a href="admin-drivers.html" class="nav-item">
+          <span class="nav-icon">👨‍✈️</span>
+          <span>Drivers</span>
+        </a>
+        <a href="admin-waitlist.html" class="nav-item">
+          <span class="nav-icon">📋</span>
+          <span>Waitlist</span>
+        </a>
+        <a href="admin-analytics.html" class="nav-item">
+          <span class="nav-icon">📊</span>
+          <span>Analytics</span>
+        </a>
+        <a href="admin-safety.html" class="nav-item">
+          <span class="nav-icon">🚨</span>
+          <span>Safety</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-icon">🏠</span>
+          <span>Back to Home</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button class="menu-toggle" id="menuToggle">☰</button>
+          <div>
+            <h1>Admin Dashboard</h1>
+            <p class="header-path">/admin/dashboard</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="user-avatar">AD</div>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <!-- Platform Stats -->
+        <section class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon green">👥</div>
+            </div>
+            <div class="stat-value">45,280</div>
+            <div class="stat-label">Total Users</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon blue">👨‍✈️</div>
+            </div>
+            <div class="stat-value">8,340</div>
+            <div class="stat-label">Total Drivers</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon amber">🚗</div>
+            </div>
+            <div class="stat-value">156,780</div>
+            <div class="stat-label">Total Rides</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon rose">💰</div>
+            </div>
+            <div class="stat-value">UGX 2.85B</div>
+            <div class="stat-label">Total Revenue</div>
+          </div>
+        </section>
+
+        <!-- Waitlist Management -->
+        <div class="content-card">
+          <div class="card-header">
+            <h3>🎟 Waitlist Management</h3>
+            <button class="app-btn secondary">View All</button>
+          </div>
+          <div class="waitlist-summary">
+            <div class="waitlist-stat">
+              <div class="stat-value">34</div>
+              <div class="stat-label">Pending</div>
+            </div>
+            <div class="waitlist-stat">
+              <div class="stat-value">125</div>
+              <div class="stat-label">Approved</div>
+            </div>
+            <div class="waitlist-stat">
+              <div class="stat-value">8</div>
+              <div class="stat-label">Rejected</div>
+            </div>
+          </div>
+          <div class="waitlist-table">
+            <div class="waitlist-row header">
+              <span>Name</span>
+              <span>Role</span>
+              <span>Position</span>
+              <span>Status</span>
+              <span>Actions</span>
+            </div>
+            <div class="waitlist-row">
+              <span>Sarah Nakato</span>
+              <span>Rider</span>
+              <span>#347</span>
+              <span class="status-badge pending">Pending</span>
+              <span class="actions">
+                <button class="btn-green">Approve</button>
+                <button class="btn-red">Reject</button>
+              </span>
+            </div>
+            <div class="waitlist-row">
+              <span>James Okello</span>
+              <span>Driver</span>
+              <span>#89</span>
+              <span class="status-badge pending">Pending</span>
+              <span class="actions">
+                <button class="btn-green">Approve</button>
+                <button class="btn-red">Reject</button>
+              </span>
+            </div>
+            <div class="waitlist-row">
+              <span>ABC Corp</span>
+              <span>Business</span>
+              <span>#12</span>
+              <span class="status-badge approved">Approved</span>
+              <span class="actions">
+                <button class="btn-blue">View</button>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Audit Log -->
+        <div class="content-card">
+          <div class="card-header">
+            <h3>📋 Audit Log</h3>
+            <button class="app-btn secondary">Export</button>
+          </div>
+          <div class="audit-list">
+            <div class="audit-item">
+              <span class="audit-action">Approved waitlist entry</span>
+              <span class="audit-user">Admin</span>
+              <span class="audit-time">2 min ago</span>
+            </div>
+            <div class="audit-item">
+              <span class="audit-action">Created new admin account</span>
+              <span class="audit-user">Super Admin</span>
+              <span class="audit-time">15 min ago</span>
+            </div>
+            <div class="audit-item">
+              <span class="audit-action">Updated surge pricing</span>
+              <span class="audit-user">Admin</span>
+              <span class="audit-time">1 hour ago</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="content-card">
+          <h3>Recent Activity</h3>
+          <div class="activity-list">
+            <div class="activity-item">
+              <span class="activity-icon">👤</span>
+              <div class="activity-details">
+                <div class="activity-text">New rider registration</div>
+                <div class="activity-time">2 minutes ago</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <span class="activity-icon">👨‍✈️</span>
+              <div class="activity-details">
+                <div class="activity-text">Driver verification approved</div>
+                <div class="activity-time">15 minutes ago</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <span class="activity-icon">📋</span>
+              <div class="activity-details">
+                <div class="activity-text">Waitlist entry approved</div>
+                <div class="activity-time">1 hour ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.dashboard-sidebar').classList.toggle('open');
+    });
+  </script>
+
+  <footer class="dashboard-footer">
+    <div>© 2025 Newton & Devin AI Assistant. All rights reserved.</div>
+    <div>RIDE. Move With Impact</div>
+  </footer>
+</body>
+</html>

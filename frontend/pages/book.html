@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Book Ride — RiDe</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="app-shell">
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <span class="brand-mark">R</span>
+          <span>RiDe</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item">
+          <span class="nav-icon">📍</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="book.html" class="nav-item active">
+          <span class="nav-icon">🚗</span>
+          <span>Book a Ride</span>
+        </a>
+        <a href="tracking.html" class="nav-item">
+          <span class="nav-icon">🧭</span>
+          <span>Live Tracking</span>
+        </a>
+        <a href="wallet.html" class="nav-item">
+          <span class="nav-icon">💳</span>
+          <span>Wallet</span>
+        </a>
+        <a href="trips.html" class="nav-item">
+          <span class="nav-icon">📋</span>
+          <span>Trip History</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+          <span class="nav-icon">👤</span>
+          <span>Profile</span>
+        </a>
+        <a href="sos.html" class="nav-item">
+          <span class="nav-icon">🛡️</span>
+          <span>SOS Emergency</span>
+        </a>
+        <a href="assistant.html" class="nav-item">
+          <span class="nav-icon">🤖</span>
+          <span>AI Assistant</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-icon">🏠</span>
+          <span>Back to Home</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button class="menu-toggle" id="menuToggle">☰</button>
+          <div>
+            <h1>Book a Ride</h1>
+            <p class="header-path">/book</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="user-avatar">SN</div>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <!-- Ride Type Tabs -->
+        <div class="ride-type-tabs">
+          <button class="ride-tab active" data-type="immediate">
+            <span class="tab-icon">🚗</span>
+            <span>Immediate Ride</span>
+          </button>
+          <button class="ride-tab" data-type="scheduled">
+            <span class="tab-icon">📅</span>
+            <span>Scheduled Ride</span>
+          </button>
+          <button class="ride-tab" data-type="airport">
+            <span class="tab-icon">✈️</span>
+            <span>Airport Ride</span>
+          </button>
+        </div>
+
+        <div class="booking-grid">
+          <!-- Booking Form -->
+          <div class="booking-form">
+            <!-- Location Inputs -->
+            <div class="content-card">
+              <h3>Where are you going?</h3>
+              <div class="location-inputs">
+                <div class="input-group">
+                  <div class="input-dot pickup"></div>
+                  <input type="text" id="pickup" placeholder="Pickup location" value="Kisaasi, Kampala">
+                </div>
+                <div class="input-group">
+                  <div class="input-dot dropoff"></div>
+                  <input type="text" id="dropoff" placeholder="Dropoff location" value="Kampala CBD">
+                </div>
+              </div>
+
+              <!-- Scheduled Ride Inputs -->
+              <div class="scheduled-inputs" id="scheduledInputs" style="display:none;">
+                <div class="date-time-grid">
+                  <input type="date" placeholder="Date">
+                  <input type="time" placeholder="Time">
+                </div>
+              </div>
+
+              <!-- Airport Ride Inputs -->
+              <div class="airport-inputs" id="airportInputs" style="display:none;">
+                <div class="airport-info">
+                  <span class="airport-icon">✈️</span>
+                  <span>Airport Ride - Flight tracking enabled</span>
+                </div>
+                <input type="text" placeholder="Flight number (optional)">
+              </div>
+            </div>
+
+            <!-- Vehicle Selection -->
+            <div class="content-card">
+              <h3>Select Vehicle</h3>
+              <div class="vehicle-grid">
+                <div class="vehicle-option" data-type="economy" data-fare="18000">
+                  <div class="vehicle-header">
+                    <span class="vehicle-name">Economy</span>
+                    <span class="vehicle-badge cheapest">Cheapest</span>
+                  </div>
+                  <div class="vehicle-price">UGX 18,000</div>
+                  <div class="vehicle-details">3 min away • 12 available</div>
+                </div>
+                <div class="vehicle-option selected" data-type="comfort" data-fare="25000">
+                  <div class="vehicle-header">
+                    <span class="vehicle-name">Comfort</span>
+                  </div>
+                  <div class="vehicle-price">UGX 25,000</div>
+                  <div class="vehicle-details">2 min away • 8 available</div>
+                </div>
+                <div class="vehicle-option" data-type="premium" data-fare="40000">
+                  <div class="vehicle-header">
+                    <span class="vehicle-name">Premium</span>
+                  </div>
+                  <div class="vehicle-price">UGX 40,000</div>
+                  <div class="vehicle-details">5 min away • 3 available</div>
+                </div>
+                <div class="vehicle-option" data-type="xl" data-fare="50000">
+                  <div class="vehicle-header">
+                    <span class="vehicle-name">XL (6 seats)</span>
+                  </div>
+                  <div class="vehicle-price">UGX 50,000</div>
+                  <div class="vehicle-details">8 min away • 2 available</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ride Preferences -->
+            <div class="content-card">
+              <button class="preferences-toggle" id="preferencesToggle">
+                <h3>Ride Preferences</h3>
+                <span class="toggle-arrow">▼</span>
+              </button>
+              <div class="preferences-grid" id="preferencesGrid" style="display:none;">
+                <label class="preference-item">
+                  <input type="checkbox">
+                  <span class="pref-icon">🔇</span>
+                  <span>Quiet Ride</span>
+                </label>
+                <label class="preference-item">
+                  <input type="checkbox">
+                  <span class="pref-icon">❄️</span>
+                  <span>AC Required</span>
+                </label>
+                <label class="preference-item">
+                  <input type="checkbox">
+                  <span class="pref-icon">🧳</span>
+                  <span>Luggage Space</span>
+                </label>
+                <label class="preference-item">
+                  <input type="checkbox">
+                  <span class="pref-icon">🐕</span>
+                  <span>Pet Friendly</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fare Summary Sidebar -->
+          <div class="fare-sidebar">
+            <div class="content-card fare-summary">
+              <h3>Fare Estimate</h3>
+              <div class="fare-display">
+                <div class="fare-amount" id="fareAmount">UGX 25,000</div>
+                <div class="fare-route">Kisaasi, Kampala → Kampala CBD</div>
+              </div>
+
+              <div class="fare-breakdown">
+                <div class="fare-item">
+                  <span>Base fare</span>
+                  <span>UGX 3,000</span>
+                </div>
+                <div class="fare-item">
+                  <span>Distance (8.2 km)</span>
+                  <span>UGX 16,400</span>
+                </div>
+                <div class="fare-item">
+                  <span>Time (25 min)</span>
+                  <span>UGX 4,100</span>
+                </div>
+                <div class="fare-item">
+                  <span>Service fee</span>
+                  <span>UGX 1,500</span>
+                </div>
+                <div class="fare-item total">
+                  <span>Total</span>
+                  <span id="totalFare">UGX 25,000</span>
+                </div>
+              </div>
+
+              <div class="payment-method">
+                <h4>Payment Method</h4>
+                <div class="payment-options">
+                  <label class="payment-option selected">
+                    <input type="radio" name="payment" value="wallet" checked>
+                    <span>💳 Wallet (UGX 85,000)</span>
+                  </label>
+                  <label class="payment-option">
+                    <input type="radio" name="payment" value="mobile">
+                    <span>📱 Mobile Money</span>
+                  </label>
+                  <label class="payment-option">
+                    <input type="radio" name="payment" value="cash">
+                    <span>💵 Cash</span>
+                  </label>
+                </div>
+              </div>
+
+              <button class="app-btn full-width" id="bookButton">Confirm & Book Ride →</button>
+            </div>
+
+            <!-- Promo Code -->
+            <div class="content-card">
+              <h3>Promo Code</h3>
+              <div class="promo-input">
+                <input type="text" placeholder="Enter promo code">
+                <button class="apply-btn">Apply</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Ride type switching
+    const rideTabs = document.querySelectorAll('.ride-tab');
+    const scheduledInputs = document.getElementById('scheduledInputs');
+    const airportInputs = document.getElementById('airportInputs');
+
+    rideTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        rideTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const type = tab.dataset.type;
+        scheduledInputs.style.display = type === 'scheduled' ? 'block' : 'none';
+        airportInputs.style.display = type === 'airport' ? 'block' : 'none';
+      });
+    });
+
+    // Vehicle selection
+    const vehicleOptions = document.querySelectorAll('.vehicle-option');
+    const fareAmount = document.getElementById('fareAmount');
+    const totalFare = document.getElementById('totalFare');
+
+    vehicleOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        vehicleOptions.forEach(o => o.classList.remove('selected'));
+        option.classList.add('selected');
+
+        const fare = option.dataset.fare;
+        fareAmount.textContent = `UGX ${parseInt(fare).toLocaleString()}`;
+        totalFare.textContent = `UGX ${parseInt(fare).toLocaleString()}`;
+      });
+    });
+
+    // Preferences toggle
+    const preferencesToggle = document.getElementById('preferencesToggle');
+    const preferencesGrid = document.getElementById('preferencesGrid');
+    const toggleArrow = preferencesToggle.querySelector('.toggle-arrow');
+
+    preferencesToggle.addEventListener('click', () => {
+      const isHidden = preferencesGrid.style.display === 'none';
+      preferencesGrid.style.display = isHidden ? 'grid' : 'none';
+      toggleArrow.textContent = isHidden ? '▲' : '▼';
+    });
+
+    // Book ride
+    document.getElementById('bookButton').addEventListener('click', () => {
+      const selectedVehicle = document.querySelector('.vehicle-option.selected');
+      const fare = selectedVehicle.dataset.fare;
+      const pickup = document.getElementById('pickup').value;
+      const dropoff = document.getElementById('dropoff').value;
+
+      // Save ride data
+      const rideData = {
+        id: 'TR-' + Date.now(),
+        pickup,
+        dropoff,
+        vehicleType: selectedVehicle.dataset.type,
+        fare: parseInt(fare),
+        status: 'searching',
+        createdAt: new Date().toISOString()
+      };
+
+      localStorage.setItem('currentRide', JSON.stringify(rideData));
+      localStorage.setItem('rideFare', fare);
+      localStorage.setItem('rideStatus', 'searching');
+
+      // Redirect to tracking
+      window.location.href = 'tracking.html';
+    });
+
+    // Menu toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.dashboard-sidebar').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

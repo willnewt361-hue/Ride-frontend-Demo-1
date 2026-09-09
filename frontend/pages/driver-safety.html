@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RIDE. - Driver Safety</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="app-shell">
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <span class="brand-mark">R</span>
+          <span>RIDE.</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="driver-dashboard.html" class="nav-item">
+          <span class="nav-icon">👨‍✈️</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="driver-rides.html" class="nav-item">
+          <span class="nav-icon">🚗</span>
+          <span>Ride Requests</span>
+        </a>
+        <a href="driver-earnings.html" class="nav-item">
+          <span class="nav-icon">💰</span>
+          <span>Earnings</span>
+        </a>
+        <a href="driver-wallet.html" class="nav-item">
+          <span class="nav-icon">💳</span>
+          <span>Wallet</span>
+        </a>
+        <a href="driver-profile.html" class="nav-item">
+          <span class="nav-icon">👤</span>
+          <span>Profile</span>
+        </a>
+        <a href="driver-safety.html" class="nav-item active">
+          <span class="nav-icon">🛡️</span>
+          <span>Safety</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button id="menuToggle" class="menu-toggle">☰</button>
+          <h1>🛡️ Driver Safety</h1>
+        </div>
+      </header>
+
+      <section class="content-card">
+        <h3>Emergency Contacts</h3>
+        <div class="emergency-contacts">
+          <div class="contact-item">
+            <span>🚨 Police</span>
+            <span>+256 700 123 456</span>
+          </div>
+          <div class="contact-item">
+            <span>🏥 Ambulance</span>
+            <span>+256 700 789 012</span>
+          </div>
+          <div class="contact-item">
+            <span>📞 RIDE Support</span>
+            <span>+256 712 345 678</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-card">
+        <h3>Safety Features</h3>
+        <ul>
+          <li>✓ Ride sharing enabled for trusted passengers</li>
+          <li>✓ SOS button for emergencies</li>
+          <li>✓ Route monitoring</li>
+          <li>✓ 24/7 support available</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.dashboard-sidebar').classList.toggle('open');
+    });
+  </script>
+
+  <footer class="dashboard-footer">
+    <div>© 2025 Newton & Devin AI Assistant. All rights reserved.</div>
+    <div>RIDE. Move With Impact</div>
+  </footer>
+</body>
+</html>

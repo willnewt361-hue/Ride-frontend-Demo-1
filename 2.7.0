@@ -1,0 +1,2 @@
+Requirement already satisfied: pydantic in C:\Users\Will_Newton\AppData\Local\Programs\Python\Python313\Lib\site-packages (1.10.13)
+Requirement already satisfied: typing-extensions>=4.2.0 in C:\Users\Will_Newton\AppData\Local\Programs\Python\Python313\Lib\site-packages (from pydantic) (4.15.0)

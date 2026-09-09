@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RIDE. - Admin Analytics</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="app-shell">
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <span class="brand-mark">R</span>
+          <span>RIDE.</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="admin-dashboard.html" class="nav-item">
+          <span class="nav-icon">🛡️</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="admin-safety.html" class="nav-item">
+          <span class="nav-icon">🛡️</span>
+          <span>Safety</span>
+        </a>
+        <a href="admin-analytics.html" class="nav-item active">
+          <span class="nav-icon">📊</span>
+          <span>Analytics</span>
+        </a>
+        <a href="admin-waitlist.html" class="nav-item">
+          <span class="nav-icon">🎟</span>
+          <span>Waitlist</span>
+        </a>
+        <a href="admin-drivers.html" class="nav-item">
+          <span class="nav-icon">👨‍✈️</span>
+          <span>Drivers</span>
+        </a>
+        <a href="admin-users.html" class="nav-item">
+          <span class="nav-icon">👥</span>
+          <span>Users</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button id="menuToggle" class="menu-toggle">☰</button>
+          <h1>📊 Platform Analytics</h1>
+        </div>
+      </header>
+
+      <section class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">45,280</div>
+          <div class="stat-label">Total Users</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">8,340</div>
+          <div class="stat-label">Total Drivers</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">156,780</div>
+          <div class="stat-label">Total Rides</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">UGX 2.85B</div>
+          <div class="stat-label">Total Revenue</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.dashboard-sidebar').classList.toggle('open');
+    });
+  </script>
+
+  <footer class="dashboard-footer">
+    <div>© 2025 Newton & Devin AI Assistant. All rights reserved.</div>
+    <div>RIDE. Move With Impact</div>
+  </footer>
+</body>
+</html>

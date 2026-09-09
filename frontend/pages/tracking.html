@@ -1,0 +1,307 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RIDE. - Live Tracking</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    #map-container {
+      height: 100%;
+      min-height: 500px;
+      position: relative;
+    }
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+    #tracking-dashboard {
+      background: linear-gradient(135deg, #020d20, #04142b);
+      padding: 20px;
+      display: flex;
+      justify-content: space-around;
+      font-size: 1.1rem;
+      color: white;
+      border-bottom: 2px solid #10b981;
+    }
+    .metric {
+      font-weight: bold;
+      color: #10b981;
+      font-size: 1.2rem;
+    }
+    .tracking-info {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body class="app-shell">
+  <!-- 
+    RIDE Platform - Live Tracking with Google Maps
+    Copyright (c) 2025 Newton & Devin AI Assistant. All rights reserved.
+    Purpose: Real-time driver tracking with Google Maps integration
+    Code Flow: GPS Updates → Google Maps API → Route Calculation → Visual Display
+  -->
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <span class="brand-mark">R</span>
+          <span>RIDE.</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item">
+          <span class="nav-icon">📍</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="book.html" class="nav-item">
+          <span class="nav-icon">🚗</span>
+          <span>Book a Ride</span>
+        </a>
+        <a href="tracking.html" class="nav-item active">
+          <span class="nav-icon">🧭</span>
+          <span>Live Tracking</span>
+        </a>
+        <a href="wallet.html" class="nav-item">
+          <span class="nav-icon">💳</span>
+          <span>Wallet</span>
+        </a>
+        <a href="trips.html" class="nav-item">
+          <span class="nav-icon">📋</span>
+          <span>Trip History</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+          <span class="nav-icon">👤</span>
+          <span>Profile</span>
+        </a>
+        <a href="sos.html" class="nav-item">
+          <span class="nav-icon">🛡️</span>
+          <span>SOS Emergency</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button id="menuToggle" class="menu-toggle">☰</button>
+          <h1>🧭 Live Tracking</h1>
+        </div>
+        <div class="header-right">
+          <span class="welcome-text">Real-time driver location</span>
+        </div>
+      </header>
+
+      <!-- Google Maps Tracking -->
+      <div id="tracking-dashboard">
+        <div>Status: <span id="status" class="metric">Initializing GPS...</span></div>
+        <div>Distance: <span id="distance" class="metric">--</span></div>
+        <div>ETA: <span id="duration" class="metric">--</span></div>
+      </div>
+      
+      <div id="map-container">
+        <div id="map"></div>
+      </div>
+
+      <!-- Driver Information -->
+      <div class="tracking-info">
+        <h3>Driver Information</h3>
+        <div class="driver-details">
+          <div class="driver-name">James Okello</div>
+          <div class="driver-phone">+256 712 345 678</div>
+          <div class="driver-vehicle">Toyota Corolla - White (UAK 456J)</div>
+          <div class="driver-rating">⭐ 4.9 Rating</div>
+        </div>
+        <div class="driver-actions">
+          <button class="btn btn-primary">📞 Call Driver</button>
+          <button class="btn btn-secondary">💬 Chat</button>
+          <button class="btn btn-danger">🛡️ SOS</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    let map;
+    let driverMarker;
+    let destinationMarker;
+    let directionsService;
+    let directionsRenderer;
+    let watchId;
+
+    // Kampala coordinates for demo
+    const destinationLatLng = { lat: 0.3476, lng: 32.5825 }; // Kampala CBD
+
+    function initMap() {
+      // 1. Initialize Map
+      map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 14,
+        center: destinationLatLng,
+        styles: [
+          {
+            "featureType": "all",
+            "elementType": "geometry",
+            "stylers": [{ "color": "#242f3e" }]
+          },
+          {
+            "featureType": "all",
+            "elementType": "labels.text.stroke",
+            "stylers": [{ "color": "#242f3e" }]
+          },
+          {
+            "featureType": "all",
+            "elementType": "labels.text.fill",
+            "stylers": [{ "color": "#746855" }]
+          }
+        ]
+      });
+
+      // 2. Initialize Directions Services
+      directionsService = new google.maps.DirectionsService();
+      directionsRenderer = new google.maps.DirectionsRenderer({
+        map: map,
+        suppressMarkers: true,
+        polylineOptions: {
+          strokeColor: "#10b981",
+          strokeWeight: 6
+        }
+      });
+
+      // 3. Place Destination Marker
+      destinationMarker = new google.maps.Marker({
+        position: destinationLatLng,
+        map: map,
+        label: "D",
+        title: "Destination",
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 10,
+          fillColor: "#10b981",
+          fillOpacity: 1,
+          strokeColor: "#ffffff",
+          strokeWeight: 2
+        }
+      });
+
+      // 4. Create Driver Marker (will position dynamically)
+      driverMarker = new google.maps.Marker({
+        map: map,
+        label: "🚗",
+        title: "Driver",
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 8,
+          fillColor: "#3b82f6",
+          fillOpacity: 1,
+          strokeColor: "#ffffff",
+          strokeWeight: 2
+        }
+      });
+
+      // 5. Start Tracking the Driver
+      startTracking();
+    }
+
+    function startTracking() {
+      if (navigator.geolocation) {
+        // For demo, simulate driver movement instead of using real GPS
+        simulateDriverMovement();
+        
+        // Uncomment below to use real GPS for driver app
+        /*
+        watchId = navigator.geolocation.watchPosition(
+          (position) => {
+            const driverLatLng = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
+            document.getElementById("status").innerText = "Tracking Live";
+            updateDriverLocation(driverLatLng);
+          },
+          (error) => {
+            console.error("Error getting geolocation: ", error);
+            document.getElementById("status").innerText = "GPS Error (Check Permissions)";
+          },
+          {
+            enableHighAccuracy: true,
+            maximumAge: 0,
+            timeout: 5000
+          }
+        );
+        */
+      } else {
+        document.getElementById("status").innerText = "Geolocation not supported";
+      }
+    }
+
+    // Simulate driver movement for demo
+    function simulateDriverMovement() {
+      let step = 0;
+      const START_LAT = 0.3410;
+      const START_LNG = 32.5700;
+      
+      setInterval(() => {
+        const angle = (step / 50) * 2 * Math.PI;
+        const simulatedLat = START_LAT + (Math.sin(angle) * 0.005);
+        const simulatedLng = START_LNG + (Math.cos(angle) * 0.005);
+        
+        const driverLatLng = { lat: simulatedLat, lng: simulatedLng };
+        document.getElementById("status").innerText = "Tracking Live (Demo Mode)";
+        updateDriverLocation(driverLatLng);
+        
+        step++;
+      }, 3000);
+    }
+
+    function updateDriverLocation(driverLatLng) {
+      // Move the driver's marker to the new coordinates
+      driverMarker.setPosition(driverLatLng);
+
+      // Calculate and draw the route to destination
+      directionsService.route(
+        {
+          origin: driverLatLng,
+          destination: destinationLatLng,
+          travelMode: google.maps.TravelMode.DRIVING,
+        },
+        (response, status) => {
+          if (status === google.maps.DirectionsStatus.OK) {
+            // Draw the route line on the map
+            directionsRenderer.setDirections(response);
+
+            // Extract distance and duration from the route data
+            const leg = response.routes[0].legs[0];
+            document.getElementById("distance").innerText = leg.distance.text;
+            document.getElementById("duration").innerText = leg.duration.text;
+          } else {
+            console.error("Directions request failed due to " + status);
+          }
+        }
+      );
+    }
+
+    window.initMap = initMap;
+
+    // Menu toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.dashboard-sidebar').classList.toggle('open');
+    });
+  </script>
+  
+  <!-- Google Maps API - Replace YOUR_API_KEY with your actual key -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&v=weekly"
+    defer
+  ></script>
+
+  <footer class="dashboard-footer">
+    <div>© 2025 Newton & Devin AI Assistant. All rights reserved.</div>
+    <div>RIDE. Move With Impact</div>
+  </footer>
+</body>
+</html>

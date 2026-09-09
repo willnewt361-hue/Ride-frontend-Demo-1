@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RiDe AI Assistant</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="app-shell">
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <span class="brand-mark">R</span>
+          <span>RiDe</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item">
+          <span class="nav-icon">📍</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="book.html" class="nav-item">
+          <span class="nav-icon">🚗</span>
+          <span>Book a Ride</span>
+        </a>
+        <a href="tracking.html" class="nav-item">
+          <span class="nav-icon">🧭</span>
+          <span>Live Tracking</span>
+        </a>
+        <a href="wallet.html" class="nav-item">
+          <span class="nav-icon">💳</span>
+          <span>Wallet</span>
+        </a>
+        <a href="trips.html" class="nav-item">
+          <span class="nav-icon">📋</span>
+          <span>Trip History</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+          <span class="nav-icon">👤</span>
+          <span>Profile</span>
+        </a>
+        <a href="sos.html" class="nav-item">
+          <span class="nav-icon">🛡️</span>
+          <span>SOS Emergency</span>
+        </a>
+        <a href="assistant.html" class="nav-item active">
+          <span class="nav-icon">🤖</span>
+          <span>AI Assistant</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-icon">🏠</span>
+          <span>Back to Home</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button class="menu-toggle" id="menuToggle">☰</button>
+          <div>
+            <h1>AI Travel Assistant</h1>
+            <p class="header-path">/assistant</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="user-avatar">SN</div>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <div class="ai-grid">
+          <!-- Chat Area -->
+          <div class="chat-container">
+            <div class="chat-header">
+              <div class="ai-avatar">
+                <span class="ai-icon">🤖</span>
+              </div>
+              <div class="ai-info">
+                <div class="ai-name">RIDE AI Assistant</div>
+                <div class="ai-status">
+                  <span class="status-dot online"></span>
+                  <span>Online</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+              <div class="message assistant">
+                <div class="message-content">
+                  Hello! I'm your AI Travel Assistant. I can help you with route planning, fare estimates, ride suggestions, and travel tips. How can I help you today?
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-suggestions">
+              <button class="suggestion-btn" data-message="Find cheapest route to CBD">
+                <span class="suggestion-icon">📍</span>
+                <span>Find cheapest route to CBD</span>
+              </button>
+              <button class="suggestion-btn" data-message="Best time to travel to Entebbe">
+                <span class="suggestion-icon">🕐</span>
+                <span>Best time to travel to Entebbe</span>
+              </button>
+              <button class="suggestion-btn" data-message="Airport ride options">
+                <span class="suggestion-icon">✈️</span>
+                <span>Airport ride options</span>
+              </button>
+              <button class="suggestion-btn" data-message="Safety tips for night rides">
+                <span class="suggestion-icon">💡</span>
+                <span>Safety tips for night rides</span>
+              </button>
+            </div>
+
+            <div class="chat-input-area">
+              <input type="text" id="chatInput" placeholder="Ask me anything about your travel...">
+              <button class="send-btn" id="sendBtn">
+                <span>➤</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Actions Sidebar -->
+          <div class="ai-sidebar">
+            <div class="content-card">
+              <h3>Quick Actions</h3>
+              <div class="quick-actions">
+                <button class="quick-action-btn" data-action="Book cheapest ride">
+                  Book cheapest ride
+                </button>
+                <button class="quick-action-btn" data-action="Check traffic now">
+                  Check traffic now
+                </button>
+                <button class="quick-action-btn" data-action="Airport transfer">
+                  Airport transfer
+                </button>
+                <button class="quick-action-btn" data-action="Schedule morning ride">
+                  Schedule morning ride
+                </button>
+                <button class="quick-action-btn" data-action="Find nearby drivers">
+                  Find nearby drivers
+                </button>
+                <button class="quick-action-btn" data-action="Get fare estimate">
+                  Get fare estimate
+                </button>
+              </div>
+            </div>
+
+            <div class="content-card">
+              <h3>Travel Tips</h3>
+              <div class="travel-tips">
+                <div class="tip-item">
+                  <span class="tip-icon">💡</span>
+                  <span>Pre-booking saves up to 15% during peak hours</span>
+                </div>
+                <div class="tip-item">
+                  <span class="tip-icon">🚗</span>
+                  <span>Comfort rides have shorter wait times in CBD</span>
+                </div>
+                <div class="tip-item">
+                  <span class="tip-icon">✈️</span>
+                  <span>Airport rides include flight delay waiting (30 min free)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const chatMessages = document.getElementById('chatMessages');
+    const chatInput = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const suggestionBtns = document.querySelectorAll('.suggestion-btn');
+    const quickActionBtns = document.querySelectorAll('.quick-action-btn');
+
+    // AI responses based on keywords
+    const aiResponses = {
+      'cheapest': 'The cheapest route to Kampala CBD from Kisaasi is via the Northern Bypass. An Economy ride would cost approximately UGX 18,000 and takes about 30 minutes. Would you like me to book this for you?',
+      'airport': 'For Entebbe Airport, I recommend booking 2 hours before your flight. A Comfort ride costs UGX 65,000 and takes about 55 minutes. We also offer meet-and-greet service for UGX 20,000 extra.',
+      'night': 'For night rides (after 10 PM), I recommend: 1) Share your trip with a contact, 2) Choose well-lit pickup points, 3) Verify driver details before entering, 4) Sit in the back seat. Night fares have a 15% surcharge.',
+      'time': 'The best time to travel to Entebbe is before 7 AM or after 10 AM to avoid rush hour traffic. Peak traffic between 7-9 AM can add 30+ minutes to your trip.',
+      'traffic': 'Current traffic conditions: Light to moderate in most areas. Some congestion reported around city center. Alternative routes available.',
+      'schedule': 'I can help you schedule a ride. What time would you like to be picked up, and where are you going?',
+      'default': 'I can help with that! Based on current traffic data, I\'d recommend a Comfort ride for the best balance of price and comfort. Would you like me to look up specific route information or fare estimates?'
+    };
+
+    function addMessage(text, isUser = false) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${isUser ? 'user' : 'assistant'}`;
+      messageDiv.innerHTML = `<div class="message-content">${text}</div>`;
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function getAIResponse(userMessage) {
+      const lowerMessage = userMessage.toLowerCase();
+      
+      for (const [keyword, response] of Object.entries(aiResponses)) {
+        if (lowerMessage.includes(keyword)) {
+          return response;
+        }
+      }
+      
+      return aiResponses.default;
+    }
+
+    function handleSendMessage() {
+      const message = chatInput.value.trim();
+      if (!message) return;
+
+      // Add user message
+      addMessage(message, true);
+      chatInput.value = '';
+
+      // Simulate AI thinking delay
+      setTimeout(() => {
+        const response = getAIResponse(message);
+        addMessage(response, false);
+      }, 1000);
+    }
+
+    // Event listeners
+    sendBtn.addEventListener('click', handleSendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') handleSendMessage();
+    });
+
+    // Suggestion buttons
+    suggestionBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const message = btn.dataset.message;
+        chatInput.value = message;
+        handleSendMessage();
+      });
+    });
+
+    // Quick action buttons
+    quickActionBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const action = btn.dataset.action;
+        chatInput.value = action;
+        handleSendMessage();
+      });
+    });
+
+    // Menu toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.dashboard-sidebar').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
